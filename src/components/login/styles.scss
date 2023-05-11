@@ -1,0 +1,31 @@
+body {
+    background: var(--background);
+}
+
+.login {
+    background: var(--background);
+
+    span {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #262626;
+    }
+
+    .speech {
+        width: 8%;
+        margin-left: 6px;
+    }
+
+    h3 {
+        color: #84817B;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+
+    #buttons {
+        button {
+            font-size: 1.7rem;         
+        }
+    }
+}
+
