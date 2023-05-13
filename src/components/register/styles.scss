@@ -1,0 +1,29 @@
+body {
+    background: var(--background);
+}
+
+.register {
+    background: var(--background);
+
+    span {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: #262626;
+    }
+
+    .speech {
+        width: 7%;
+        margin-left: 6px;
+    }
+
+    h3 {
+        color: #84817B;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+
+    p {
+        color: #84817B;
+        font-weight: 600;
+    }
+}

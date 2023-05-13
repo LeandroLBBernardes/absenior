@@ -1,9 +1,9 @@
 import './styles.scss'
-import Logo from '../../assets/image-login.png'
 import Speech from '../../assets/speech-icon.png'
 
 import { useNavigate } from 'react-router-dom'
-import { TextToSpeech } from '../../services/voice/voice-service';
+import { TextToSpeech } from '../../shared/services/voice/voice-service';
+import { LateralLoginImage } from '../../shared/components/lateral-login-image';
 
 export function Login() {
     const navigate = useNavigate();
@@ -40,9 +40,7 @@ export function Login() {
                             </button>
                     </div>
             </div>
-            <div className='hidden sm:block'>
-                <img className='w-full h-screen object-cover' src={Logo} />
-            </div>
+            <LateralLoginImage />
         </div>
     );
 }
