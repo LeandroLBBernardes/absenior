@@ -1,9 +1,9 @@
-import { Outlet } from "react-router-dom"
+import { PublicRoutes } from "./routes/routes"
 
 export default function App() {
   return (
     <>
-      <Outlet />
+      <PublicRoutes />
     </>
   )
 }
