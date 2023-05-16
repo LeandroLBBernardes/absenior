@@ -2,7 +2,7 @@ body {
     background: var(--background);
 }
 
-.register {
+.signin {
     background: var(--background);
 
     span {
@@ -12,7 +12,7 @@ body {
     }
 
     .speech {
-        width: 7%;
+        width: 14%;
         margin-left: 6px;
     }
 
@@ -25,5 +25,9 @@ body {
     p {
         color: #84817B;
         font-weight: 600;
+
+        a {
+            margin-left: 5px;
+        }
     }
 }

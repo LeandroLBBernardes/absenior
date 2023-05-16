@@ -2,13 +2,14 @@ import './styles.scss'
 import Speech from '../../assets/speech-icon.png'
 
 import { useNavigate } from 'react-router-dom';
-import { TextToSpeech } from '../../shared/services/voice/voice-service';
-import { LateralLoginImage } from '../../shared/components/lateral-login-image';
 import { useState } from 'react';
-import { IUser } from './../../shared/interfaces/user-interface.interface';
-import { supabase } from '../../shared/services/supabase/supabase';
+import { IUser } from '../../interfaces/user-interface.interface';
+import { supabase } from '../../services/supabase/supabase';
+import { LateralLoginImage } from '../../components/lateral-login-image';
+import { TextToSpeech } from '../../services/voice/voice-service';
 
-export function SignIn() {
+
+export function Login() {
     const [user, setUser] = useState({} as IUser);
     const navigate = useNavigate();
 

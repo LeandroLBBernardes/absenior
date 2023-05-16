@@ -3,12 +3,13 @@ import Speech from '../../assets/speech-icon.png'
 import Swal from 'sweetalert2'
 
 import { useNavigate } from 'react-router-dom';
-import { TextToSpeech } from '../../shared/services/voice/voice-service';
-import { LateralLoginImage } from '../../shared/components/lateral-login-image';
-import { supabase } from '../../shared/services/supabase/supabase';
-import { IUser } from '../../shared/interfaces/user-interface.interface';
+
+import { IUser } from '../../interfaces/user-interface.interface';
 import { useState } from 'react';
 import { useAuth } from '../../hooks/user-auth';
+import { supabase } from '../../services/supabase/supabase';
+import Logo from '../../assets/image-login.png'
+import { TextToSpeech } from '../../services/voice/voice-service';
 
 export function Register() {
     const [dataUser, setDataUser] = useState({} as IUser);
@@ -31,7 +32,7 @@ export function Register() {
         })
 
         if(error)
-            errorAlert(error);
+            errorAlert();
         else{
             sucessAlert();
             setUser(data);
@@ -40,17 +41,17 @@ export function Register() {
     }
 
     const navigateToSignIn = () => {
-        return navigate('../signin');
+        return navigate('../login');
     }
 
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full register'>
              <form 
-                className='flex flex-col justify-center text-center items-center px-10 sm:px-32 sm:py-8 lg:px-32 2xl:px-64 gap-5'
+                className='flex flex-col justify-center text-center items-center px-10 sm:px-32 lg:px-32 2xl:px-64 gap-5'
                 onSubmit={submitForm}>
                     <div>
                         <span>Cadastro</span>
-                        <button className='speech' onClick={textToVoice}>
+                        <button className='speech' onClick={textToVoice} type='button'>
                             <img src={Speech} />
                         </button>
                         <h3>Informe seus dados.</h3>
@@ -110,7 +111,9 @@ export function Register() {
                             </p>
                     </div>
             </form>
-            <LateralLoginImage />
+            <div className='hidden lg:block'>
+            <img className='w-full h-screen object-cover' src={Logo} />
+        </div>
         </div>
     );
 }
@@ -122,11 +125,11 @@ function textToVoice(): void {
     speech.textToSpeech(text);
 }
 
-function errorAlert(error: any): void {
+function errorAlert(): void {
     Swal.fire({
         icon: 'error',
-        title: error.name,
-        text: error.message,
+        title: 'Erro ao cadastrar!',
+        text: 'Usuário já cadastrado',
         confirmButtonColor: '#508E92'
     })
 }

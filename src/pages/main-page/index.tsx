@@ -2,10 +2,10 @@ import './styles.scss'
 import Speech from '../../assets/speech-icon.png'
 
 import { useNavigate } from 'react-router-dom'
-import { TextToSpeech } from '../../shared/services/voice/voice-service';
-import { LateralLoginImage } from '../../shared/components/lateral-login-image';
+import { TextToSpeech } from '../../services/voice/voice-service';
+import { LateralLoginImage } from '../../components/lateral-login-image';
 
-export function Login() {
+export function Main() {
     const navigate = useNavigate();
 
     const navigateToRegister = () => {
@@ -13,7 +13,7 @@ export function Login() {
     }
 
     const navigateToSignIn = () => {
-        return navigate('signin');
+        return navigate('login');
     }
 
     return(

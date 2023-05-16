@@ -1,4 +1,4 @@
-import Logo from '../../../assets/image-login.png'
+import Logo from '../../assets/image-login.png'
 
 export function LateralLoginImage() {
     return(
