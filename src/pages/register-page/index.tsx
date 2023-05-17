@@ -47,7 +47,7 @@ export function Register() {
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full register'>
              <form 
-                className='flex flex-col justify-center text-center items-center px-10 sm:px-32 lg:px-32 2xl:px-64 gap-5'
+                className='flex flex-col justify-center text-center items-center px-12 py-8 lg:py-0 sm:px-32 lg:px-32 2xl:px-64 gap-5 sm:gap-2'
                 onSubmit={submitForm}>
                     <div>
                         <span>Cadastro</span>
