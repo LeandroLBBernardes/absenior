@@ -6,14 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { IUser } from '../../interfaces/user-interface.interface';
 import { useState } from 'react';
-import { useAuth } from '../../hooks/user-auth';
 import { supabase } from '../../services/supabase/supabase';
-import Logo from '../../assets/image-login.png'
 import { TextToSpeech } from '../../services/voice/voice-service';
+import { InputForm } from '../../components/input-form';
+import { LateralLoginImage } from '../../components/lateral-login-image';
 
 export function Register() {
     const [dataUser, setDataUser] = useState({} as IUser);
-    const { setUser } = useAuth();
     const navigate = useNavigate();
 
     const handleChange = (event: any) => {
@@ -26,7 +25,7 @@ export function Register() {
     const submitForm = async (eventSubmit: any) => {
         eventSubmit.preventDefault();
 
-        let { data, error } = await supabase.auth.signUp({
+        let { error } = await supabase.auth.signUp({
             email: dataUser.email,
             password: dataUser.password
         })
@@ -35,13 +34,17 @@ export function Register() {
             errorAlert();
         else{
             sucessAlert();
-            setUser(data);
+            navigateToResume();
         }
             
     }
 
     const navigateToSignIn = () => {
         return navigate('../login');
+    }
+
+    const navigateToResume = () => {
+        return navigate('../home');
     }
 
     return(
@@ -57,63 +60,37 @@ export function Register() {
                         <h3>Informe seus dados.</h3>
                     </div>
                     <div className='flex flex-col justify-center text-left items-left w-full mx-auto gap-5'>
-                            <div>
-                                <label htmlFor='name'>Nome</label>
-                                <input
-                                    id='name'
-                                    name='name'
-                                    className='w-full absenior-input p-4 lg:p-4' 
-                                    type='text' 
-                                    placeholder='Digite seu nome'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor='email'>E-mail</label>
-                                <input
-                                    id='email'
-                                    name='email' 
-                                    className='w-full absenior-input p-4 lg:p-4' 
-                                    type='email' 
-                                    placeholder='Digite seu e-mail'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor='school'>Escola</label>
-                                <input
-                                    id='school'
-                                    name='school' 
-                                    className='w-full absenior-input p-4 lg:p-4' 
-                                    type='text' 
-                                    placeholder='Digite sua escola'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor='password'>Senha</label>
-                                <input
-                                    id='password'
-                                    name='password' 
-                                    className='w-full absenior-input p-4 lg:p-4' 
-                                    type='password' 
-                                    placeholder='Digite sua senha'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
+                            <InputForm
+                                label='Nome' 
+                                id='name'
+                                name='name'
+                                type='text'
+                                placeholder='Digite seu nome'
+                                onValueChange={handleChange}
+                            />
+                            <InputForm
+                                label='E-mail' 
+                                id='email'
+                                name='email'
+                                type='email'
+                                placeholder='Digite seu e-mail'
+                                onValueChange={handleChange}
+                            />
+                            <InputForm
+                                label='Senha' 
+                                id='password'
+                                name='password'
+                                type='password'
+                                placeholder='Digite sua senha'
+                                onValueChange={handleChange}
+                            />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8'>Confirmar</button>
                             <p>Já possui uma conta? 
                                 <a className='underline cursor-pointer' onClick={navigateToSignIn}>Entrar</a>
                             </p>
                     </div>
             </form>
-            <div className='hidden lg:block'>
-            <img className='w-full h-screen object-cover' src={Logo} />
-        </div>
+            <LateralLoginImage />
         </div>
     );
 }
@@ -140,5 +117,5 @@ function sucessAlert(): void {
         title: 'Sucesso',
         text: 'Seu cadastro foi realizado com sucesso',
         confirmButtonColor: '#508E92'
-    })
+    });
 }

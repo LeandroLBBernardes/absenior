@@ -7,6 +7,7 @@ import { IUser } from '../../interfaces/user-interface.interface';
 import { supabase } from '../../services/supabase/supabase';
 import { LateralLoginImage } from '../../components/lateral-login-image';
 import { TextToSpeech } from '../../services/voice/voice-service';
+import { InputForm } from '../../components/input-form';
 
 
 export function Login() {
@@ -39,9 +40,9 @@ export function Login() {
 
 
     return(
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 h-screen w-full signin'>
+        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full signin'>
              <form 
-                className='flex flex-col justify-center text-center items-center px-10 lg:px-32 2xl:px-64 gap-5'
+                className='flex flex-col justify-center text-center items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5 sm:gap-2'
                 onSubmit={submitForm}>
                     <div>
                         <span>Entrar</span>
@@ -51,32 +52,22 @@ export function Login() {
                         <h3>Digite seu e-mail e senha.</h3>
                     </div>
                     <div className='flex flex-col justify-center text-left items-left w-full mx-auto gap-5'>
-                            <div>
-                                <label htmlFor='email'>E-mail</label>
-                                <input
-                                    required
-                                    id='email'
-                                    name='email' 
-                                    className='w-full absenior-input p-4 lg:p-4'
-                                    type='email' 
-                                    placeholder='Digite seu e-mail'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
-                            <div>
-                                <label htmlFor='password'>Senha</label>
-                                <input
-                                    required
-                                    id='password'
-                                    name='password' 
-                                    className='w-full absenior-input p-4 lg:p-4' 
-                                    type='password' 
-                                    placeholder='Digite sua senha'
-                                    onChange={handleChange}
-                                    autoComplete='off'
-                                />
-                            </div>
+                            <InputForm
+                                label='E-mail' 
+                                id='email'
+                                name='email'
+                                type='email'
+                                placeholder='Digite seu e-mail'
+                                onValueChange={handleChange}
+                            />
+                            <InputForm
+                                label='Senha' 
+                                id='senha'
+                                name='senha'
+                                type='senha'
+                                placeholder='Digite sua senha'
+                                onValueChange={handleChange}
+                            />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8' type='submit'>Confirmar</button>
                             <p>Não possui uma conta? 
                                 <a className='underline cursor-pointer' onClick={navigateToRegister}>Cadastrar</a>

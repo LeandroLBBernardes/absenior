@@ -17,8 +17,8 @@ export function Main() {
     }
 
     return(
-        <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 h-screen w-full login'>
-            <div className='flex flex-col justify-center text-center items-center px-10 lg:px-32 2xl:px-64 gap-10'>
+        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full login'>
+            <div className='flex flex-col justify-center text-center items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-10'>
                     <div>
                         <span>Olá, Bem Vindo!</span>
                         <button className='speech' onClick={textToVoice}>
