@@ -61,7 +61,11 @@ export function Register() {
 
     const finalizeRegister = (data: any) => {
         registerUser(data);
-        navigateToResume();
+        
+        setTimeout(() => {
+            navigateToResume();
+        }, 1500);
+        
         sucessAlert();
     }
 
