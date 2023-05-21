@@ -7,6 +7,8 @@ import { ErrorPage } from '../pages/error-page/index.js';
 import { Home } from '../pages/home-page/index.js';
 import ProtectedRoute from '../components/protected-route/index.js';
 import { Resume } from '../pages/resume-page/index.js';
+import { EmailResetPassword } from '../pages/email-reset-password-page/index.js';
+import { ResetPassword } from '../pages/reset-password-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -16,6 +18,8 @@ export function PublicRoutes() {
           <Route path="/" element={<Main />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login  />} />
+          <Route path="emailresetpassword" element={<EmailResetPassword  />} />
+          <Route path="resetpassword" element={<ResetPassword  />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>}>
             <Route path='' element={<Resume  />} />

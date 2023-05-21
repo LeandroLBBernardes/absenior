@@ -1,5 +1,6 @@
 import './styles.scss'
 import Speech from '../../assets/speech-icon.png'
+import Swal from 'sweetalert2';
 
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -9,14 +10,13 @@ import { LateralLoginImage } from '../../components/lateral-login-image';
 import { TextToSpeech } from '../../services/voice/voice-service';
 import { InputForm } from '../../components/input-form';
 
-
 export function Login() {
-    const [user, setUser] = useState({} as IUser);
+    const [userData, setUserData] = useState({} as IUser);
     const navigate = useNavigate();
-
+    const speech: TextToSpeech = new TextToSpeech();
 
     const handleChange = (event: any) => {
-        setUser((prevUser) => ({
+        setUserData((prevUser) => ({
             ...prevUser,
             [event.target.name]: event.target.value
         }));
@@ -25,19 +25,63 @@ export function Login() {
     const submitForm = async (eventSubmit: any) => {
         eventSubmit.preventDefault();
 
-        let response = await supabase.auth.signInWithPassword({
-            email: user.email,
-            password: user.password
-        })
+        try {
+            const { error } = await supabase.auth.signInWithPassword({
+                email: userData.email,
+                password: userData.password
+            });
 
-        console.log(response);
+            if(error) {
+                throw new Error(error.message);
+            } else {
+                finalizeLogin();
+            }
+              
+        } catch(error) {
+            errorAlert();
+        }
+        
     }
 
+    const finalizeLogin = () => {
+        navigateToResume();
+    }
 
     const navigateToRegister = () => {
         return navigate('../register');
     }
 
+    const navigateToResetPassword = () => {
+        return navigate('../emailresetpassword');
+    }
+
+    const navigateToResume = () => {
+        return navigate('../home');
+    }
+
+    const textToVoice = () => {
+        const text: string = `Entrar! Nos espaços abaixo digite seu e-mail 
+                              e sua senha e depois clique em confirmar!`;
+        speech.textToSpeech(text);
+    }
+
+    const errorAlert = () => {
+        const title: string = 'Erro ao logar!';
+        const text: string = 'Email ou senha incorreta';
+
+        Swal.fire({
+            icon: 'error',
+            title: title,
+            text: text,
+            confirmButtonColor: '#508E92'
+        }).then((result: any) => {
+            if(result.isConfirmed) {
+                speech.textToSpeech(text);
+            }
+        })
+    }
+
+    //---------------------------------------------------------------------------------------------------------------------------------
 
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full signin'>
@@ -61,14 +105,17 @@ export function Login() {
                                 onValueChange={handleChange}
                             />
                             <InputForm
-                                label='Senha' 
-                                id='senha'
-                                name='senha'
-                                type='senha'
+                                label='password' 
+                                id='password'
+                                name='password'
+                                type='password'
                                 placeholder='Digite sua senha'
                                 onValueChange={handleChange}
                             />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8' type='submit'>Confirmar</button>
+                            <p>Esqueceu sua senha? 
+                                <a className='underline cursor-pointer' onClick={navigateToResetPassword}>Esqueci minha senha</a>
+                            </p>
                             <p>Não possui uma conta? 
                                 <a className='underline cursor-pointer' onClick={navigateToRegister}>Cadastrar</a>
                             </p>
@@ -77,11 +124,4 @@ export function Login() {
             <LateralLoginImage />
         </div>
     );
-}
-
-function textToVoice(): void {
-    const speech: TextToSpeech = new TextToSpeech();
-    const text: string = 'Entrar! Nos espaços abaixo digite seu e-mail e sua senha e depois clique em confirmar!';
-
-    speech.textToSpeech(text);
 }

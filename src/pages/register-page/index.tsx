@@ -10,33 +10,59 @@ import { supabase } from '../../services/supabase/supabase';
 import { TextToSpeech } from '../../services/voice/voice-service';
 import { InputForm } from '../../components/input-form';
 import { LateralLoginImage } from '../../components/lateral-login-image';
+import { insertUser } from '../../services/users-service/users-supabase';
 
 export function Register() {
     const [dataUser, setDataUser] = useState({} as IUser);
     const navigate = useNavigate();
+    const speech: TextToSpeech = new TextToSpeech();
 
     const handleChange = (event: any) => {
         setDataUser((prevUser) => ({
             ...prevUser,
             [event.target.name]: event.target.value
         }));
+
+        console.log(dataUser.password)
     }
 
     const submitForm = async (eventSubmit: any) => {
         eventSubmit.preventDefault();
 
-        let { error } = await supabase.auth.signUp({
-            email: dataUser.email,
-            password: dataUser.password
-        })
+        try {
+            let { data, error} = await supabase.auth.signUp({
+                email: dataUser.email,
+                password: dataUser.password
+            })
 
-        if(error)
+            if(error)
+                throw new Error(error.message);
+            else{
+                finalizeRegister(data);
+            }
+                
+        } catch(error) {
             errorAlert();
-        else{
-            sucessAlert();
-            navigateToResume();
-        }
-            
+        }        
+    }
+
+    const registerUser = (data: any) => {
+        const userToInsert: IUser = fillDataToInsert(data);
+        insertUser(userToInsert);
+    }
+
+    const fillDataToInsert = (data: any): IUser => {
+        return {
+            id: data.user?.id,
+            name: dataUser.name,
+            email: dataUser.email
+        } as IUser;
+    }
+
+    const finalizeRegister = (data: any) => {
+        registerUser(data);
+        navigateToResume();
+        sucessAlert();
     }
 
     const navigateToSignIn = () => {
@@ -47,6 +73,37 @@ export function Register() {
         return navigate('../home');
     }
 
+    const textToVoice = () => {
+        const text: string = `Cadastrar! Nos espaços abaixo digite seu nome, seu e-mail e sua senha, 
+                              depois clique em confirmar!`;
+        speech.textToSpeech(text);
+    }
+
+    const sucessAlert = () => {
+        const title: string = 'Sucesso';
+        const text: string = 'Seu cadastro foi realizado com sucesso';
+
+        Swal.fire({
+            icon: 'success',
+            title: title,
+            text: text,
+            confirmButtonColor: '#508E92'
+        }).then ((result: any) => {
+            if(result.isConfirmed)
+                speech.textToSpeech(text);
+        });
+    }
+
+    const errorAlert = () => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro ao cadastrar!',
+            text: 'Usuário já cadastrado',
+            confirmButtonColor: '#508E92'
+        })
+    }
+
+    //------------------------------------------------------------------------------------------------------------------------------------------
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full register'>
              <form 
@@ -93,29 +150,4 @@ export function Register() {
             <LateralLoginImage />
         </div>
     );
-}
-
-function textToVoice(): void {
-    const speech: TextToSpeech = new TextToSpeech();
-    const text: string = 'Cadastrar! Nos espaços abaixo digite seu nome, seu e-mail, sua escola e sua senha, depois clique em confirmar!';
-
-    speech.textToSpeech(text);
-}
-
-function errorAlert(): void {
-    Swal.fire({
-        icon: 'error',
-        title: 'Erro ao cadastrar!',
-        text: 'Usuário já cadastrado',
-        confirmButtonColor: '#508E92'
-    })
-}
-
-function sucessAlert(): void {
-    Swal.fire({
-        icon: 'success',
-        title: 'Sucesso',
-        text: 'Seu cadastro foi realizado com sucesso',
-        confirmButtonColor: '#508E92'
-    });
 }
