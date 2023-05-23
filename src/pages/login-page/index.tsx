@@ -65,17 +65,14 @@ export function Login() {
     }
 
     const errorAlert = () => {
-        const title: string = 'Erro ao logar!';
-        const text: string = 'Email ou senha incorreta';
-
         Swal.fire({
             icon: 'error',
-            title: title,
-            text: text,
+            title: ptBr.loginPage_alertTitle,
+            text: ptBr.loginPage_alertText,
             confirmButtonColor: '#508E92'
         }).then((result: any) => {
             if(result.isConfirmed) {
-                speech.textToSpeech(text);
+                speech.textToSpeech(ptBr.loginPage_alertText);
             }
         })
     }

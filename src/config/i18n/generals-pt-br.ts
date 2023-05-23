@@ -6,5 +6,7 @@ export const ptBr = {
     loginPage_notRegistered: 'Não possui uma conta?',
     loginPage_notRegisteredLink: 'Cadastrar',
     loginPage_speech: 'Entrar! Nos espaços abaixo digite seu e-mail e sua senha e depois clique em confirmar!',
+    loginPage_alertTitle: 'Erro ao logar!',
+    loginPage_alertText: 'Email ou senha incorreta',
     confirmButton: 'Confirmar'
 }
