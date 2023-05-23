@@ -9,6 +9,7 @@ import { supabase } from '../../services/supabase/supabase';
 import { LateralLoginImage } from '../../components/lateral-login-image';
 import { TextToSpeech } from '../../services/voice/voice-service';
 import { InputForm } from '../../components/input-form';
+import { ptBr } from '../../config/i18n/generals-pt-br';
 
 export function Login() {
     const [userData, setUserData] = useState({} as IUser);
@@ -40,7 +41,6 @@ export function Login() {
         } catch(error) {
             errorAlert();
         }
-        
     }
 
     const finalizeLogin = () => {
@@ -60,8 +60,7 @@ export function Login() {
     }
 
     const textToVoice = () => {
-        const text: string = `Entrar! Nos espaços abaixo digite seu e-mail 
-                              e sua senha e depois clique em confirmar!`;
+        const text: string = ptBr.loginPage_speech;
         speech.textToSpeech(text);
     }
 
@@ -89,11 +88,11 @@ export function Login() {
                 className='flex flex-col justify-center text-center items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5 sm:gap-2'
                 onSubmit={submitForm}>
                     <div>
-                        <span>Entrar</span>
-                        <button className='speech' onClick={textToVoice}>
+                        <span>{ptBr.loginPage_title}</span>
+                        <button className='speech' onClick={textToVoice} type='button'>
                             <img src={Speech} />
                         </button>
-                        <h3>Digite seu e-mail e senha.</h3>
+                        <h3>{ptBr.loginPage_subTitle}</h3>
                     </div>
                     <div className='flex flex-col justify-center text-left items-left w-full mx-auto gap-5'>
                             <InputForm
@@ -112,12 +111,12 @@ export function Login() {
                                 placeholder='Digite sua senha'
                                 onValueChange={handleChange}
                             />
-                            <button className='w-full absenior-button text-lg p-8 lg:p-8' type='submit'>Confirmar</button>
-                            <p>Esqueceu sua senha? 
-                                <a className='underline cursor-pointer' onClick={navigateToResetPassword}>Esqueci minha senha</a>
+                            <button className='w-full absenior-button text-lg p-8 lg:p-8' type='submit'>{ptBr.confirmButton}</button>
+                            <p>{ptBr.loginPage_forgotPassword} 
+                                <a className='underline cursor-pointer' onClick={navigateToResetPassword}>{ptBr.loginPage_forgotPasswordLink}</a>
                             </p>
-                            <p>Não possui uma conta? 
-                                <a className='underline cursor-pointer' onClick={navigateToRegister}>Cadastrar</a>
+                            <p>{ptBr.loginPage_notRegistered} 
+                                <a className='underline cursor-pointer' onClick={navigateToRegister}>{ptBr.loginPage_notRegisteredLink}</a>
                             </p>
                     </div>
                 </form>
