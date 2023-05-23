@@ -1,5 +1,6 @@
 import './styles.scss'
 import Speech from '../../assets/speech-icon.png'
+import LoadingGif from '../../assets/loading-gif.gif'
 
 import { InputForm } from '../../components/input-form'
 import { LateralLoginImage } from '../../components/lateral-login-image';
@@ -12,6 +13,7 @@ import { IUser } from '../../interfaces/user-interface.interface';
 
 export function EmailResetPassword() {
     const [userData, setUserData] = useState({} as IUser);
+    const [loading, setLoading] = useState(false);
     const speech: TextToSpeech = new TextToSpeech();
     const navigate = useNavigate();
 
@@ -23,6 +25,8 @@ export function EmailResetPassword() {
     }
 
     const sendEmail = async () => {
+        setLoading(true);
+        
         try {
             const { error } = await supabase.auth.resetPasswordForEmail(userData.email);
 
@@ -32,7 +36,9 @@ export function EmailResetPassword() {
             sucessAlert();
         } catch(error) {
             errorAlert();
-        }    
+        } finally {
+            setLoading(false); 
+        }
     }
 
     const navigateToLogin = () => {
@@ -40,7 +46,7 @@ export function EmailResetPassword() {
     }
 
     const voiceToText = () => {
-        const text: string = `Esqueci minha senha! Digite o email para o qual gostaria de receber
+        const text: string = `Esqueceu a senha? Digite o email para o qual gostaria de receber
                               a recuperação de senha. Ao clicar no botão você receberá por email
                               um link para cadastrar sua nova senha.`;
 
@@ -79,7 +85,7 @@ export function EmailResetPassword() {
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full'>
             <div className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'>
                 <div className='text-center'>
-                    <span>Esqueci minha senha</span>
+                    <span>Esqueceu a senha?</span>
                     <button className='speech' onClick={voiceToText}>
                         <img src={Speech} />
                     </button>
@@ -92,11 +98,18 @@ export function EmailResetPassword() {
                         type='email'
                         placeholder='Digite seu e-mail'
                         onValueChange={handleChange}
+                        isDisable={loading}
                     />
                 </div>
-                <button className='w-full absenior-button' onClick={sendEmail}>Enviar Email</button>
-                <p>Ao clicar no botão você receberá por email um link para cadastrar sua nova senha.</p>
-                <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a>
+                {!loading ? (
+                    <>
+                        <button className='w-full absenior-button' onClick={sendEmail}>Enviar Email</button>
+                        <p>Ao clicar no botão você receberá por email um link para cadastrar sua nova senha.</p>
+                        <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a> 
+                    </>
+                ) : (
+                    <img src={LoadingGif} className='loading' />
+                )}    
             </div>
             <LateralLoginImage />
         </div>

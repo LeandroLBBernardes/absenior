@@ -13,6 +13,7 @@ export function InputForm(props: IInputForm ) {
                 placeholder={props.placeholder}
                 autoComplete='off'
                 onChange={props.onValueChange}
+                disabled={props.isDisable ? props.isDisable : false}
             />
         </div>
     );

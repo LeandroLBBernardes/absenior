@@ -105,7 +105,7 @@ export function Login() {
                                 onValueChange={handleChange}
                             />
                             <InputForm
-                                label='password' 
+                                label='Senha' 
                                 id='password'
                                 name='password'
                                 type='password'
