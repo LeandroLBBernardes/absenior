@@ -1,5 +1,7 @@
 export function Resume() {
     return(
-        <h1>Logado</h1>
+        <div className="bg-black w-full min-h-full ">
+            <h1>Teste</h1>
+        </div>
     );
 }

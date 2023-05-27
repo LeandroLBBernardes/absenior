@@ -22,7 +22,7 @@ export function PublicRoutes() {
           <Route path="resetpassword" element={<ResetPassword  />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>}>
-            <Route path='' element={<Resume  />} />
+            <Route index element={<Resume  />} />
           </Route>
         </Routes>
       </AuthProvider>
