@@ -4,12 +4,9 @@ import SideBar from '../../components/sidebar'
 
 export function Home() {
     return(
-        <div className='flex'>
+        <div className='flex flex-col md:flex-row min-h-screen'>
             <SideBar />
-
-            <div className='p-5 w-full'>
-                <Outlet />
-            </div>
+            <Outlet />
         </div>
     )
 }

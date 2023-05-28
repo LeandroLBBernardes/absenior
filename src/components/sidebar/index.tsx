@@ -13,7 +13,7 @@ export default function SideBar() {
 
     const menus = [
         { name: "Home", link: "../home", icon: MdHome },
-        { name: "Menu Principal", link: "/", icon: MdDashboard },
+        { name: "Menu", link: "/", icon: MdDashboard },
         { name: "Perfil", link: "/", icon: MdSettings },
         { name: "Sair", link: "", icon: FaDoorOpen, click: () => {logoutSystem()}}
     ];
@@ -60,78 +60,79 @@ export default function SideBar() {
     }
 
     return (
-        <div className={`bg-absenior-orange min-h-screen ${open ? "w-52" : "w-20"} duration-500 text-white flex flex-col justify-between pb-6`}>
-            <div className="flex flex-col relative text-white">
-            <div className="py-3 flex justify-end px-4">
-                <HiMenuAlt3
-                size={32}
-                className="cursor-pointer"
-                onClick={() => setOpen(!open)}
-                />
+        <div className={`bg-absenior-orange h-14 md:min-h-screen w-full ${open ? "md:w-52" : "md:w-20"} duration-0 md:duration-500 text-white pb-0 md:pb-4
+        flex flex-row md:flex-col justify-center md:justify-between sticky top-0`}>
+            <div className="flex flex-row md:flex-col relative text-white">
+                <div className="py-0 md:py-3 flex justify-end px-0 md:px-4">
+                    <HiMenuAlt3
+                        size={32}
+                        className="cursor-pointer hidden md:block" 
+                        onClick={() => setOpen(!open)}
+                    />
+                </div>
+                <div className="flex flex-row md:flex-col relative text-white">   
+                    {menus?.map((menu, i) => (
+                    i < 2 && 
+                    <Link
+                        to={menu?.link}
+                        key={i}
+                        className="mt-3 md:mt-5 group flex text-sm font-medium p-0 md:p-2 hover:bg-absenior-orange-hover text-white delay-0 md:delay-100"
+                    >
+                        <div className="px-0 md:px-4 font-bold">{React.createElement(menu?.icon, { size: "28"})}</div>
+                        <h2
+                        style={{
+                            transitionDelay: `100ms`
+                        }}
+                        className={`flex flex-col justify-items-center whitespace-pre duration-0 md:duration-500 text-sm justify-center
+                        ${!open && "opacity-0 overflow-hidden text-center text-sm"} invisible md:visible`}
+                        >
+                        {menu?.name}
+                        </h2>
+                        <h2
+                        className={`${open && "hidden"} 
+                                absolute left-18 bg-white font-semibold whitespace-pre
+                                text-absenior-background rounded-md drop-shadow-lg 
+                                px-0 py-0 w-0 overflow-hidden group-hover:px-2 
+                                group-hover:py-1 group-hover:left-24 group-hover:duration-100 
+                                group-hover:w-fit`}
+                        >
+                        {menu?.name}
+                        </h2>
+                    </Link>
+                    ))}
+                </div>
             </div>
-            <div className="flex flex-col relative text-white">   
+            
+            <div className="flex flex-row md:flex-col relative text-white">   
                 {menus?.map((menu, i) => (
-                i < 2 && 
-                <Link
+                    i >= 2 && 
+                    <Link
                     to={menu?.link}
                     key={i}
-                    className="mt-5 group flex text-sm font-medium p-2 hover:bg-absenior-orange-hover text-white delay-100"
-                >
-                    <div className="px-4 font-bold">{React.createElement(menu?.icon, { size: "28"})}</div>
-                    <h2
-                    style={{
-                        transitionDelay: `100ms`
-                    }}
-                    className={`flex flex-col justify-items-center whitespace-pre duration-500 text-sm justify-center
-                    ${!open && "opacity-0 overflow-hidden text-center text-sm"}`}
+                    className="mt-3 md:mt-5 group flex text-sm font-medium p-0 md:p-2 hover:bg-absenior-orange-hover text-white delay-0 md:delay-100"
                     >
-                    {menu?.name}
+                    <div className="px-0 md:px-4 font-bold" onClick={menu?.click && menu?.click }>{React.createElement(menu?.icon, { size: "28"})}</div>
+                    <h2
+                        style={{
+                        transitionDelay: `100ms`
+                        }}
+                        className={`flex flex-col justify-items-center whitespace-pre duration-0 md:duration-500 text-sm justify-center
+                        ${!open && "opacity-0 overflow-hidden text-center text-sm"} invisible md:visible`}
+                    >
+                        {menu?.name}
                     </h2>
                     <h2
-                    className={`${open && "hidden"} 
+                        className={`${open && "hidden"} 
                             absolute left-18 bg-white font-semibold whitespace-pre
                             text-absenior-background rounded-md drop-shadow-lg 
                             px-0 py-0 w-0 overflow-hidden group-hover:px-2 
                             group-hover:py-1 group-hover:left-24 group-hover:duration-100 
                             group-hover:w-fit`}
                     >
-                    {menu?.name}
+                        {menu?.name}
                     </h2>
-                </Link>
+                    </Link>
                 ))}
-            </div>
-            </div>
-            
-            <div className="flex flex-col relative text-white">   
-            {menus?.map((menu, i) => (
-                i >= 2 && 
-                <Link
-                to={menu?.link}
-                key={i}
-                className="mt-5 group flex text-sm font-medium p-2 hover:bg-absenior-orange-hover text-white delay-100"
-                >
-                <div className="px-4 font-bold" onClick={menu?.click && menu?.click }>{React.createElement(menu?.icon, { size: "28"})}</div>
-                <h2
-                    style={{
-                    transitionDelay: `100ms`
-                    }}
-                    className={`flex flex-col justify-items-center whitespace-pre duration-500 text-sm justify-center
-                    ${!open && "opacity-0 overflow-hidden text-center text-sm"}`}
-                >
-                    {menu?.name}
-                </h2>
-                <h2
-                    className={`${open && "hidden"} 
-                        absolute left-18 bg-white font-semibold whitespace-pre
-                        text-absenior-background rounded-md drop-shadow-lg 
-                        px-0 py-0 w-0 overflow-hidden group-hover:px-2 
-                        group-hover:py-1 group-hover:left-24 group-hover:duration-100 
-                        group-hover:w-fit`}
-                >
-                    {menu?.name}
-                </h2>
-                </Link>
-            ))}
             </div>
             
         </div>
