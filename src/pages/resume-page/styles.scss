@@ -1,11 +1,15 @@
-.card {
+.card-resume {
     box-shadow: 1px 2px 10px 1px rgba(0, 0, 0, 0.2);
     font-family: 'Nunito Sans', sans-serif;
     color: #262626;
 
     h1 {
-        font-size: 36px;
-        font-weight: 600;
+        font-size: 38px;
+        font-weight: 400;
+
+        @media (max-width: 1536px) {
+            font-size: 32px;
+        }
     }
 
     span {
@@ -48,5 +52,33 @@
             font-weight: 400;
             font-size: 24px;
         }
+    }
+
+    .card-performance {
+        border: 1px solid #CECECE;
+        border-radius: 15px;
+
+        h1{
+            font-weight: 400;
+            font-size: 24px;
+
+            @media (min-width: 1536px) {
+                font-weight: 400;
+                font-size: 32px;
+            }
+        }
+
+        p {
+            color: #CECECE;
+            font-weight: 600;
+            font-size: 15px;
+
+            @media (min-width: 1536px) {
+                font-weight: 400;
+                font-size: 20px;
+            }
+        }
+
+        
     }
 }

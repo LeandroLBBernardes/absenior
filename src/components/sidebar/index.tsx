@@ -61,7 +61,7 @@ export default function SideBar() {
 
     return (
         <div className={`bg-absenior-orange h-14 md:min-h-screen w-full ${open ? "md:w-52" : "md:w-20"} duration-0 md:duration-500 text-white pb-0 md:pb-4
-        flex flex-row md:flex-col justify-center md:justify-between sticky top-0`}>
+        flex flex-row md:flex-col justify-center md:justify-between sticky top-0 z-50`}>
             <div className="flex flex-row md:flex-col relative text-white">
                 <div className="py-0 md:py-3 flex justify-end px-0 md:px-4">
                     <HiMenuAlt3
