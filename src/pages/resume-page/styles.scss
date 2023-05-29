@@ -28,7 +28,7 @@
             width: 100%;
             cursor: pointer;
             background: var(--orange);
-            border-radius: 20px;
+            border-radius: 48px;
             font-size: 72px;
             font-weight: 700;
 
@@ -36,6 +36,10 @@
 
             &:hover {
                 filter: brightness(0.9);
+            }
+
+            @media (max-width: 1536px) {
+                border-radius: 20px;
             }
         }
 

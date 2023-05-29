@@ -3,6 +3,7 @@ import { ptBr } from '../../config/i18n/generals-pt-br'
 import { ImVolumeHigh } from "react-icons/im"
 import './styles.scss'
 import React, { useState } from 'react';
+import { UserPerfil } from '../../components/user-perfil';
 
 export function Resume() {
     
@@ -34,16 +35,16 @@ export function Resume() {
 
     return(
         <>
-        <div className='flex flex-col gap-5 w-full min-h-screen p-5'>
+        <div className='flex flex-col gap-2 w-full min-h-screen px-5 pb-5 pt-5 md:pt-2'>
             <div className='flex flex-row md:justify-end'>
-                teste
+                <UserPerfil />
             </div>
             
             <div className='grid grid-cols-1 lg:grid-cols-12 grid-rows-6 h-full lg:gap-5'>
                 <div className='lg:col-span-9 row-span-full grid grid-cols-9 grid-flow-row gap-5'>
                     <div 
                         className='w-full min-h-full bg-white rounded-3xl card grid grid-cols-1 lg:grid-cols-3 
-                                    col-span-full row-span-2 justify-center'>
+                                    col-span-full row-auto justify-center'>
                         <div 
                             className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-2 2xl:gap-3'>
                             <div className='flex items-center w-full'>
@@ -58,9 +59,9 @@ export function Resume() {
                     </div>
                     <div 
                         className='w-full min-h-full bg-white rounded-3xl card grid grid-cols-1 lg:grid-cols-3 
-                                   col-span-full row-span-3 lg:row-span-3 2xl:row-span-4 justify-center 2xl:pt-10'>
+                                   col-span-full row-auto 2xl:row-span-4 justify-center 2xl:pt-10'>
                         <div 
-                            className='col-span-full flex flex-col p-5 lg:px-9 gap-8 2xl:gap-20'>
+                            className='col-span-full flex flex-col p-5 lg:px-9 gap-10 md:gap-8 2xl:gap-20'>
                             <div className='grid gap-2 2xl:gap-3'>    
                                 <div className='flex items-center w-full'>
                                     <h1>Nível de dificuldade</h1>
@@ -69,7 +70,7 @@ export function Resume() {
                                 <p>{ptBr.resumePage_TextCard2}</p>
                             </div>
                             
-                            <div className='resume-buttons grid grid-cols-1 md:grid-cols-3 gap-10 h-full'>
+                            <div className='resume-buttons grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 h-full'>
                                 {difficultyButtons?.map((button,index) => (
                                     <div className='flex flex-col text-center gap-3' key={index}>
                                         <button className={`${button.isDisable && 'opacity-60'} h-full`} onClick={() => setDifficulty(index)}>
