@@ -4,18 +4,45 @@
     color: #262626;
 
     h1 {
-        font-size: 32px;
-        font-weight: 400;
+        font-size: 36px;
+        font-weight: 600;
     }
 
     span {
         margin-left: 8px;
         color: var(--button);
+        cursor: pointer;
     }
 
     p {
         font-weight: 400;
         font-size: 20px;
         color: #262626;
+    }
+
+    .resume-buttons {
+        color: var(--orange);
+
+        button {
+            color: white;
+            width: 100%;
+            cursor: pointer;
+            background: var(--orange);
+            border-radius: 46px;
+            font-size: 72px;
+            font-weight: 700;
+
+            transition: filter 0.2s;
+
+            &:hover {
+                filter: brightness(0.9);
+            }
+        }
+
+        span {
+            color: var(--orange);
+            font-weight: 400;
+            font-size: 24px;
+        }
     }
 }

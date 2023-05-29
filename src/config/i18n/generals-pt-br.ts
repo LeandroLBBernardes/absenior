@@ -9,5 +9,6 @@ export const ptBr = {
     loginPage_alertTitle: 'Erro ao logar!',
     loginPage_alertText: 'Email ou senha incorreta',
     confirmButton: 'Confirmar',
-    resumePage_TextCard1: 'Na página atual você encontrará um resumo com informações sobre o seu desempenho geral e trá a opção de ajustar seu nível de aprendizagem.'
+    resumePage_TextCard1: 'Na página atual você encontrará um resumo com informações sobre o seu desempenho geral e terá a opção de ajustar seu nível de aprendizagem.',
+    resumePage_TextCard2: 'Clique no nível de aprendizado em que você se encontra. Quanto mais alto o nível, mais difícil serão as palavras.'
 }
