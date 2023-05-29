@@ -35,33 +35,33 @@ export function Resume() {
     return(
         <>
         <div className='flex flex-col gap-5 w-full min-h-screen p-5'>
-            <div className='flex flex-row md:justify-end py-5'>
+            <div className='flex flex-row md:justify-end'>
                 teste
             </div>
             
             <div className='grid grid-cols-1 lg:grid-cols-12 grid-rows-6 h-full lg:gap-5'>
-                <div className='lg:col-span-9 row-span-full grid grid-cols-9 lg:grid-rows-6 gap-5'>
+                <div className='lg:col-span-9 row-span-full grid grid-cols-9 grid-flow-row gap-5'>
                     <div 
                         className='w-full min-h-full bg-white rounded-3xl card grid grid-cols-1 lg:grid-cols-3 
                                     col-span-full row-span-2 justify-center'>
                         <div 
-                            className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-3'>
+                            className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-2 2xl:gap-3'>
                             <div className='flex items-center w-full'>
                                 <h1>Olá, Sebastião!</h1>
                                 <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                             </div>
                             <p>{ptBr.resumePage_TextCard1}</p>
                         </div>
-                        <div className='flex flex-col justify-center'>
+                        <div className='flex flex-col justify-center items-center'>
                             <img className='object-scale-down h-48 w-96 justify-self-center' src={SeniorChair}/>
                         </div>    
                     </div>
                     <div 
                         className='w-full min-h-full bg-white rounded-3xl card grid grid-cols-1 lg:grid-cols-3 
-                                   col-span-full row-span-3 lg:row-span-4 justify-center pt-1 md:pt-2 2xl:pt-10'>
+                                   col-span-full row-span-3 lg:row-span-3 2xl:row-span-4 justify-center 2xl:pt-10'>
                         <div 
-                            className='col-span-full flex flex-col p-5 lg:pl-9 gap-10 2xl:gap-20'>
-                            <div className='grid gap-3'>    
+                            className='col-span-full flex flex-col p-5 lg:px-9 gap-8 2xl:gap-20'>
+                            <div className='grid gap-2 2xl:gap-3'>    
                                 <div className='flex items-center w-full'>
                                     <h1>Nível de dificuldade</h1>
                                     <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
