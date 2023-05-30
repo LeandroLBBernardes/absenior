@@ -49,7 +49,7 @@ export function Resume() {
     return(
         <>
         <div className='flex flex-col gap-2 w-full min-h-screen px-5 pb-5 pt-5 md:pt-2 mb-5 lg:mb-0'>
-            <div className='flex flex-row md:justify-end'>
+            <div className='flex flex-row md:justify-end py-2 2xl:py-5'>
                 <UserPerfil />
             </div>
             

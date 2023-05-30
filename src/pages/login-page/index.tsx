@@ -80,7 +80,7 @@ export function Login() {
     //---------------------------------------------------------------------------------------------------------------------------------
 
     return(
-        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full signin'>
+        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full signin py-5 lg:py-0'>
              <form 
                 className='flex flex-col justify-center text-center items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5 sm:gap-2'
                 onSubmit={submitForm}>
@@ -112,7 +112,7 @@ export function Login() {
                             <p>{ptBr.loginPage_forgotPassword} 
                                 <a className='underline cursor-pointer' onClick={navigateToResetPassword}>{ptBr.loginPage_forgotPasswordLink}</a>
                             </p>
-                            <p>{ptBr.loginPage_notRegistered} 
+                            <p className='mb-5 lg:mb-0'>{ptBr.loginPage_notRegistered} 
                                 <a className='underline cursor-pointer' onClick={navigateToRegister}>{ptBr.loginPage_notRegisteredLink}</a>
                             </p>
                     </div>
