@@ -7,4 +7,7 @@ export interface IUser {
     type: number;
     image: string;
     pontuation: number;
+    insigniaCount: number;
+    wordsCount: number;
+    level: number;
 }

@@ -1,32 +1,54 @@
 import './styles.scss'
-import React, { useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import SeniorChair from '../../assets/img-senior-chair.png'
-
 import { ptBr } from '../../config/i18n/generals-pt-br'
 import { UserPerfil } from '../../components/user-perfil'
-
 import { ImVolumeHigh } from "react-icons/im"
 import { FaCoins } from "react-icons/fa"
 import { MdStars } from "react-icons/md"
 import { CgLoadbarSound } from "react-icons/cg"
-
+import { getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
+import { useAuth } from '../../hooks/user-auth';
+import { IUser } from '../../interfaces/user-interface.interface';
+import useUserLevel from '../../hooks/zustand/user-level';
 
 export function Resume() {
-    
     const initialDifficultyButtons = [
-        {id: 0, level: 1, description: "Fácil", isDisable: false},
+        {id: 0, level: 1, description: "Fácil", isDisable: true},
         {id: 1, level: 2, description: "Médio", isDisable: true},
         {id: 2, level: 3, description: "Difícil", isDisable: true}
     ];
 
-    const initialPerformanceCard = [
-        {id:0, title: '16', text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
-        {id:0, title: '01/40', text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
-        {id:0, title: '04', text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
-    ]
-
+    const { user }: any = useAuth();
+    
     const [difficultyButtons, setDifficultyButtons] = useState(initialDifficultyButtons);
+    const [userData, setUserData] = useState({} as IUser);
+
+    const setUserLevel = useUserLevel(state => state.setLevel);
+
+    useEffect(() => {
+        const userA: any = getUser(user.id);
+
+        let countWord: number = 0;
+        let countInsignias: number = 0;
+
+        getWordCount(user.id).then((data: any) => { data ? countWord = data : countWord = 0});
+        getWordCount(user.id).then((data: any) => { data ? countWord = data : countWord = 0});
+
+        userA.then(
+            (data: any) => {
+                setUserData({
+                    name: data.nome,
+                    insigniaCount: countInsignias,
+                    wordsCount: countWord,
+                    level: data.nivel,
+                    pontuation: data.pontuacao
+                } as IUser);
+
+                setDifficulty(data.nivel - 1);
+            }
+        );
+    },[])
 
     const setDifficulty = (index: number): any => {
         const nextDifficultyButtons = difficultyButtons.map((button, idButton) => {
@@ -43,11 +65,29 @@ export function Resume() {
             }
         });
 
+        setUserLevel(index+1);
         setDifficultyButtons(nextDifficultyButtons);
     }
 
+    const setDifficultyByClick = (index: number): any => {
+        updateUserLevel(user.id, index+1);
+        setDifficulty(index);
+    }
+
+    const convertNumberToString = (numberToConvert: number): string => {
+        if(!numberToConvert)
+            return '00';
+
+        return numberToConvert < 10 ? String(numberToConvert).padStart(2,'0') : String(numberToConvert);
+    }
+
+    const initialPerformanceCard = [
+        {id:0, title: convertNumberToString(userData.pontuation), text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
+        {id:0, title: `${convertNumberToString(userData.insigniaCount)}/40`, text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
+        {id:0, title: convertNumberToString(userData.wordsCount), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
+    ];
+
     return(
-        <>
         <div className='flex flex-col gap-2 w-full min-h-screen px-5 pb-5 pt-5 md:pt-2 mb-5 lg:mb-0'>
             <div className='flex flex-row md:justify-end py-2 2xl:py-5'>
                 <UserPerfil />
@@ -61,11 +101,12 @@ export function Resume() {
                         <div 
                             className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-2 2xl:gap-3'>
                             <div className='flex items-center w-full'>
-                                <h1>Olá, Sebastião!</h1>
+                                <h1>Olá, {userData.name}!</h1>
                                 <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                             </div>
                             <p>{ptBr.resumePage_TextCard1}</p>
                         </div>
+
                         <div className='flex flex-col justify-center items-center'>
                             <img className='object-scale-down h-48 w-96 justify-self-center' src={SeniorChair}/>
                         </div>    
@@ -86,7 +127,7 @@ export function Resume() {
                             <div className='resume-buttons grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-10 h-full'>
                                 {difficultyButtons?.map((button,index) => (
                                     <div className='flex flex-col text-center gap-3' key={index}>
-                                        <button className={`${button.isDisable && 'opacity-60'} h-full`} onClick={() => setDifficulty(index)}>
+                                        <button className={`${button.isDisable && 'opacity-60'} h-full`} onClick={() => setDifficultyByClick(index)}>
                                             {button.level}
                                         </button>
                                         <span className={`${button.isDisable && 'opacity-60'}`}>{button.description}</span>
@@ -119,6 +160,5 @@ export function Resume() {
                 </div>
             </div>
         </div>
-        </>
     );
 }
