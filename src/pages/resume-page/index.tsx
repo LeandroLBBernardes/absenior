@@ -10,8 +10,9 @@ import { CgLoadbarSound } from "react-icons/cg"
 import { getInsigniasCount, getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
 import { useAuth } from '../../hooks/user-auth';
 import useUserLevel from '../../hooks/zustand/user-level';
-import { useQuery } from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 import { LoadingPage } from '../loading-page';
+import { textToSpeech } from './utils';
 
 export function Resume() {
 
@@ -27,7 +28,7 @@ export function Resume() {
 
     const setUserLevel = useUserLevel(state => state.setLevel);
 
-    const {status: statusUserData, data: userData, isLoading: isLoadingUserData} = useQuery("usuarios",() => {
+    const {status: statusUserData, data: userData, isLoading: isLoadingUserData, refetch: refetchUser} = useQuery("usuarios",() => {
         return getUser(user.id);
     });
 
@@ -37,6 +38,15 @@ export function Resume() {
 
     const {data: countIgnias, isLoading: isLoadingCountInsignias} = useQuery("insignias",() => {
         return getInsigniasCount(user.id);
+    });
+
+    const mutation = useMutation({
+        mutationFn: ({userId,level}: any) => {
+            return updateUserLevel(userId, level);
+        },
+        onSuccess: () => {
+            refetchUser();
+        }
     });
 
     const setDifficulty = (index: number): any => {
@@ -64,8 +74,6 @@ export function Resume() {
         }
     },[statusUserData,userData]);
 
-    
-
     if(isLoadingUserData || isLoadingCountWord || isLoadingCountInsignias){
         return(
             <>
@@ -75,8 +83,7 @@ export function Resume() {
     }    
 
     const setDifficultyByClick = (index: number): any => {
-        updateUserLevel(user.id, index+1);
-        setDifficulty(index);
+        mutation.mutate({userId: user.id, level: index+1});
     }
 
     const convertNumberToString = (numberToConvert: number | null | undefined): string => {
@@ -91,6 +98,10 @@ export function Resume() {
         {id:0, title: `${convertNumberToString(countIgnias)}/40`, text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
         {id:0, title: convertNumberToString(countWord), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
     ];
+
+    const textIntro = ptBr.resumePage_Intro.replace('{0}', userData.nome).replace('{1}', ptBr.resumePage_TextCard1);
+    const textLevel = ptBr.resumePage_Level.replace('{0}', ptBr.resumePage_TextCard2);
+    const textPerformance = ptBr.resumePage_Performance.replace('{0}',userData.pontuacao).replace('{1}',convertNumberToString(countIgnias)).replace('{2}',convertNumberToString(countWord));
     
     return(
         <div className='flex flex-col gap-2 w-full min-h-screen px-5 pb-5 pt-5 md:pt-2 mb-5 lg:mb-0'>
@@ -107,7 +118,7 @@ export function Resume() {
                             className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-2 2xl:gap-3'>
                             <div className='flex items-center w-full'>
                                 <h1>Olá, {userData.nome}!</h1>
-                                <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
+                                <span onClick={() => textToSpeech(textIntro)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                             </div>
                             <p>{ptBr.resumePage_TextCard1}</p>
                         </div>
@@ -124,7 +135,7 @@ export function Resume() {
                             <div className='grid gap-2 2xl:gap-3'>    
                                 <div className='flex items-center w-full'>
                                     <h1>Nível de dificuldade</h1>
-                                    <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
+                                    <span onClick={() => textToSpeech(textLevel)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                                 </div>
                                 <p>{ptBr.resumePage_TextCard2}</p>
                             </div>
@@ -147,7 +158,7 @@ export function Resume() {
                                 lg:row-span-full mt-5 lg:mt-0 p-5 flex flex-col gap-5 lg:gap-0 2xl:gap-16'>
                     <div className='flex items-center w-full'>
                         <h1>Desempenho</h1>
-                        <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
+                        <span onClick={() => textToSpeech(textPerformance)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                     </div>
                     <div className='flex flex-col gap-5 justify-center 2xl:justify-start h-full'>
                         {initialPerformanceCard?.map((card, index) => (

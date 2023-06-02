@@ -6,7 +6,7 @@ type State = {
 }
 
 const useUserLevel = create<State>((set) => ({
-  userLevel: 0,
+  userLevel: 1,
 
   setLevel: (level: number) => set(() => ({ userLevel: level }))
 }))
