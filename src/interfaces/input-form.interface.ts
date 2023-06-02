@@ -6,4 +6,5 @@ export interface IInputForm {
     placeholder: string;
     isDisable?: boolean;
     onValueChange: (event: any) => void;
+    value?: string;
 }

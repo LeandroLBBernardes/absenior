@@ -46,7 +46,9 @@ export function Register() {
                 
         } catch(error) {
             errorAlert();
-        }        
+        }
+        
+        setIsLoading(false);
     }
 
     const registerUser = (data: any) => {
@@ -63,7 +65,6 @@ export function Register() {
     }
 
     const finalizeRegister = (data: any) => {
-        setIsLoading(false);
         registerUser(data);
         
         setTimeout(() => {
@@ -140,6 +141,7 @@ export function Register() {
                                 type='text'
                                 placeholder='Digite seu nome'
                                 onValueChange={handleChange}
+                                value={dataUser.name}
                             />
                             <InputForm
                                 label='E-mail' 
@@ -148,6 +150,7 @@ export function Register() {
                                 type='email'
                                 placeholder='Digite seu e-mail'
                                 onValueChange={handleChange}
+                                value={dataUser.email}
                             />
                             <InputForm
                                 label='Senha' 
@@ -156,6 +159,7 @@ export function Register() {
                                 type='password'
                                 placeholder='Digite sua senha'
                                 onValueChange={handleChange}
+                                value={dataUser.password}
                             />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8'>Confirmar</button>
                             <p>Já possui uma conta? 

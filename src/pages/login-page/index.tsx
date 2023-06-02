@@ -45,10 +45,11 @@ export function Login() {
         } catch(error) {
             errorAlert();
         }
+
+        setIsLoading(false);
     }
 
     const finalizeLogin = () => {
-        setIsLoading(false);
         navigateToResume();
     }
 
@@ -112,6 +113,7 @@ export function Login() {
                                 type='email'
                                 placeholder='Digite seu e-mail'
                                 onValueChange={handleChange}
+                                value={userData.email}
                             />
                             <InputForm
                                 label='Senha' 
@@ -120,6 +122,7 @@ export function Login() {
                                 type='password'
                                 placeholder='Digite sua senha'
                                 onValueChange={handleChange}
+                                value={userData.password}
                             />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8' type='submit'>{ptBr.confirmButton}</button>
                             <p>{ptBr.loginPage_forgotPassword} 
