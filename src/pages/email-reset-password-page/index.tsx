@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { supabase } from '../../services/supabase/supabase';
 import { useState } from 'react';
 import { IUser } from '../../interfaces/user-interface.interface';
+import { LoadingPage } from '../loading-page';
 
 export function EmailResetPassword() {
     const [userData, setUserData] = useState({} as IUser);
@@ -79,6 +80,14 @@ export function EmailResetPassword() {
                    verifique também de o email é válido`,
             confirmButtonColor: '#508E92'
         })
+    }
+
+    if(loading){
+        return(
+            <>
+                <LoadingPage />
+            </>
+        )  
     }
 
     return(

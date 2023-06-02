@@ -10,9 +10,11 @@ import { LateralLoginImage } from '../../components/lateral-login-image';
 import { TextToSpeech } from '../../services/voice/voice-service';
 import { InputForm } from '../../components/input-form';
 import { ptBr } from '../../config/i18n/generals-pt-br';
+import { LoadingPage } from '../loading-page';
 
 export function Login() {
     const [userData, setUserData] = useState({} as IUser);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const speech: TextToSpeech = new TextToSpeech();
 
@@ -27,6 +29,8 @@ export function Login() {
         eventSubmit.preventDefault();
 
         try {
+            setIsLoading(true);
+
             const { error } = await supabase.auth.signInWithPassword({
                 email: userData.email,
                 password: userData.password
@@ -44,6 +48,7 @@ export function Login() {
     }
 
     const finalizeLogin = () => {
+        setIsLoading(false);
         navigateToResume();
     }
 
@@ -75,6 +80,14 @@ export function Login() {
                 speech.textToSpeech(ptBr.loginPage_alertText);
             }
         })
+    }
+
+    if(isLoading){
+        return(
+            <>
+                <LoadingPage />
+            </>
+        )  
     }
 
     //---------------------------------------------------------------------------------------------------------------------------------

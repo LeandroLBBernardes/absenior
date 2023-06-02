@@ -11,9 +11,11 @@ import { TextToSpeech } from '../../services/voice/voice-service';
 import { InputForm } from '../../components/input-form';
 import { LateralLoginImage } from '../../components/lateral-login-image';
 import { insertUser } from '../../services/users-service/users-supabase';
+import { LoadingPage } from '../loading-page';
 
 export function Register() {
     const [dataUser, setDataUser] = useState({} as IUser);
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
     const speech: TextToSpeech = new TextToSpeech();
 
@@ -30,6 +32,7 @@ export function Register() {
         eventSubmit.preventDefault();
 
         try {
+            setIsLoading(true);
             let { data, error} = await supabase.auth.signUp({
                 email: dataUser.email,
                 password: dataUser.password
@@ -60,6 +63,7 @@ export function Register() {
     }
 
     const finalizeRegister = (data: any) => {
+        setIsLoading(false);
         registerUser(data);
         
         setTimeout(() => {
@@ -105,6 +109,14 @@ export function Register() {
             text: 'Usuário já cadastrado',
             confirmButtonColor: '#508E92'
         })
+    }
+
+    if(isLoading){
+        return(
+            <>
+                <LoadingPage />
+            </>
+        )  
     }
 
     //------------------------------------------------------------------------------------------------------------------------------------------

@@ -7,12 +7,14 @@ import { ImVolumeHigh } from "react-icons/im"
 import { FaCoins } from "react-icons/fa"
 import { MdStars } from "react-icons/md"
 import { CgLoadbarSound } from "react-icons/cg"
-import { getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
+import { getInsigniasCount, getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
 import { useAuth } from '../../hooks/user-auth';
-import { IUser } from '../../interfaces/user-interface.interface';
 import useUserLevel from '../../hooks/zustand/user-level';
+import { useQuery } from 'react-query';
+import { LoadingPage } from '../loading-page';
 
 export function Resume() {
+
     const initialDifficultyButtons = [
         {id: 0, level: 1, description: "Fácil", isDisable: true},
         {id: 1, level: 2, description: "Médio", isDisable: true},
@@ -22,33 +24,20 @@ export function Resume() {
     const { user }: any = useAuth();
     
     const [difficultyButtons, setDifficultyButtons] = useState(initialDifficultyButtons);
-    const [userData, setUserData] = useState({} as IUser);
 
     const setUserLevel = useUserLevel(state => state.setLevel);
 
-    useEffect(() => {
-        const userA: any = getUser(user.id);
+    const {status: statusUserData, data: userData, isLoading: isLoadingUserData} = useQuery("usuarios",() => {
+        return getUser(user.id);
+    });
 
-        let countWord: number = 0;
-        let countInsignias: number = 0;
+    const {data: countWord, isLoading: isLoadingCountWord} = useQuery("palavras",() => {
+        return getWordCount(user.id);
+    });
 
-        getWordCount(user.id).then((data: any) => { data ? countWord = data : countWord = 0});
-        getWordCount(user.id).then((data: any) => { data ? countWord = data : countWord = 0});
-
-        userA.then(
-            (data: any) => {
-                setUserData({
-                    name: data.nome,
-                    insigniaCount: countInsignias,
-                    wordsCount: countWord,
-                    level: data.nivel,
-                    pontuation: data.pontuacao
-                } as IUser);
-
-                setDifficulty(data.nivel - 1);
-            }
-        );
-    },[])
+    const {data: countIgnias, isLoading: isLoadingCountInsignias} = useQuery("insignias",() => {
+        return getInsigniasCount(user.id);
+    });
 
     const setDifficulty = (index: number): any => {
         const nextDifficultyButtons = difficultyButtons.map((button, idButton) => {
@@ -69,12 +58,28 @@ export function Resume() {
         setDifficultyButtons(nextDifficultyButtons);
     }
 
+    useEffect(() => {
+        if(statusUserData === 'success') {
+            setDifficulty(userData.nivel-1);
+        }
+    },[statusUserData,userData]);
+
+    
+
+    if(isLoadingUserData || isLoadingCountWord || isLoadingCountInsignias){
+        return(
+            <>
+                <LoadingPage />
+            </>
+        );
+    }    
+
     const setDifficultyByClick = (index: number): any => {
         updateUserLevel(user.id, index+1);
         setDifficulty(index);
     }
 
-    const convertNumberToString = (numberToConvert: number): string => {
+    const convertNumberToString = (numberToConvert: number | null | undefined): string => {
         if(!numberToConvert)
             return '00';
 
@@ -82,11 +87,11 @@ export function Resume() {
     }
 
     const initialPerformanceCard = [
-        {id:0, title: convertNumberToString(userData.pontuation), text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
-        {id:0, title: `${convertNumberToString(userData.insigniaCount)}/40`, text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
-        {id:0, title: convertNumberToString(userData.wordsCount), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
+        {id:0, title: convertNumberToString(userData.pontuacao), text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
+        {id:0, title: `${convertNumberToString(countIgnias)}/40`, text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
+        {id:0, title: convertNumberToString(countWord), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
     ];
-
+    
     return(
         <div className='flex flex-col gap-2 w-full min-h-screen px-5 pb-5 pt-5 md:pt-2 mb-5 lg:mb-0'>
             <div className='flex flex-row md:justify-end py-2 2xl:py-5'>
@@ -101,7 +106,7 @@ export function Resume() {
                         <div 
                             className='col-span-2 flex flex-col p-5 lg:pl-9 justify-center gap-2 2xl:gap-3'>
                             <div className='flex items-center w-full'>
-                                <h1>Olá, {userData.name}!</h1>
+                                <h1>Olá, {userData.nome}!</h1>
                                 <span onClick={() => console.log('teste')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
                             </div>
                             <p>{ptBr.resumePage_TextCard1}</p>
