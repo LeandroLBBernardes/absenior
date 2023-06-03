@@ -6,7 +6,8 @@ export function InputForm(props: IInputForm ) {
         <div>
             <label
                 className='2xl:text-lg' 
-                htmlFor={props.id}>{props.label}</label>
+                htmlFor={props.id}>{props.label}
+            </label>
             <input
                 id={props.id}
                 name={props.name}
