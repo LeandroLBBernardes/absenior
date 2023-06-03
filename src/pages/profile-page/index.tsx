@@ -8,6 +8,7 @@ import { getUser, updateUserNameEmail, uploadUserFilePic } from '../../services/
 import { LoadingPage } from '../loading-page';
 import { IUser } from '../../interfaces/user-interface.interface';
 import Swal from 'sweetalert2';
+import { validateEmailNotEmpty, validateNameNotEmpty } from './utils';
 
 export function Profile() {
 
@@ -75,8 +76,10 @@ export function Profile() {
   const submitForm = (eventSubmit: any) => {
     eventSubmit.preventDefault();
 
-    mutation.mutate({userId:user.id, userData: userData});
-    mutationImage.mutate({userId: user.id, file: profilePic});
+    if(validateNameNotEmpty(userData.name) && validateEmailNotEmpty(userData.email)) {
+      mutation.mutate({userId:user.id, userData: userData});
+      mutationImage.mutate({userId: user.id, file: profilePic});
+    }
   }
 
   const sucessAlert = () => {
@@ -110,7 +113,7 @@ export function Profile() {
                 id='name'
                 name='name'
                 type='text'
-                placeholder=''
+                placeholder='Digite seu nome'
                 onValueChange={handleChange}
                 value={userData.name}
             />
@@ -119,7 +122,7 @@ export function Profile() {
                 id='email'
                 name='email'
                 type='email'
-                placeholder='Digite sua senha'
+                placeholder='Digite seu email'
                 onValueChange={handleChange}
                 value={userData.email}
             />
