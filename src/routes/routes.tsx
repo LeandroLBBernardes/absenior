@@ -9,6 +9,9 @@ import ProtectedRoute from '../components/protected-route/index.js';
 import { Resume } from '../pages/resume-page/index.js';
 import { EmailResetPassword } from '../pages/email-reset-password-page/index.js';
 import { ResetPassword } from '../pages/reset-password-page/index.js';
+import { Profile } from '../pages/profile-page/index.js';
+import { Settings } from '../pages/settings-page/index.js';
+import { ChangePassword } from '../pages/change-password-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -23,6 +26,10 @@ export function PublicRoutes() {
           <Route path="*" element={<ErrorPage />} />
           <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>}>
             <Route index element={<Resume  />} />
+            <Route path="settings" element={<Settings />}>
+              <Route index element={<Profile  />} />
+              <Route path="password" element={<ChangePassword  />} />
+            </Route>
           </Route>
         </Routes>
       </AuthProvider>

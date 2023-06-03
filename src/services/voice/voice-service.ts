@@ -33,6 +33,6 @@ export class TextToSpeech {
             speech.voice = this.selectedVoice;
 
         speech.volume = 1;
-        speech.rate = 1.5; 
+        speech.rate = 1; 
     }
 }

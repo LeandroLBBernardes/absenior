@@ -103,3 +103,94 @@ export async function updateUserLevel(userId: string, userLevel: number) {
         console.log(error);
     }
 }
+
+export async function updateUserNameEmail(userId: string, user: IUser) {
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({nome: user.name, email: user.email})
+        .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function uploadUserFilePic(userId: string, file: any, lastFileName: string) {
+    if((typeof file == 'string' && lastFileName != file.slice(73)) 
+     || typeof file != 'string' && lastFileName != file.name)
+        deleUserImage(userId, file, lastFileName);
+}
+
+async function updateExistFile(userId: string, file: any) {
+    try {
+        const { error } = await supabase
+        .storage
+        .from('images')
+        .update(userId+"/",file)
+        
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+async function updateUserImage(userId: string, path: string) {
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({imagem: `https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/images/${path}`})
+        .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+async function deleUserImage(userId: string, newFile: any, fileName: string) {
+    if(fileName.includes(userId) && !fileName.includes('undefined')) {
+        try {
+            const {error} = await supabase
+            .storage
+            .from('images')
+            .remove([fileName])
+    
+            if(error) {
+                throw new Error(error.message);
+            } else {
+                uploadNewFile(userId,newFile);
+            }
+    
+        } catch(error) {
+            console.log(error);
+        }
+    } else {
+        uploadNewFile(userId,newFile);
+    }
+}
+
+async function uploadNewFile(userId: string, file: any) {
+    try {
+        const { data, error } = await supabase
+        .storage
+        .from('images')
+        .upload(userId+"/"+file.name,file)
+
+        if(error) {
+            throw new Error(error.message);
+        } else { 
+            updateUserImage(userId, data.path);
+        }
+    } catch(error) {
+        updateExistFile(userId, file);
+    }
+}

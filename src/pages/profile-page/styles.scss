@@ -1,0 +1,40 @@
+.card-profile {
+  font-family: 'Nunito Sans', sans-serif;
+  color: #262626;
+
+  h1 {
+    font-size: 36px;
+    font-weight: 400;
+  }
+
+  hr {
+    background: #E7E7E7;
+    height: 2px;
+  }
+
+  .absenior-input {
+    border: 1px solid #E7E7E7;
+  }
+
+  .upload {
+    input[type="file"] {
+      display: none;
+    }
+
+    label {
+      cursor: pointer;
+      border: 1px solid #F6C66A;
+      padding: 8px 28px;
+      background: #F6C66A;
+      color: #4A4848;
+
+      box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+      transition: filter 0.2s;
+
+      &:hover {
+          filter: brightness(0.9);
+      }
+    }
+  }
+}

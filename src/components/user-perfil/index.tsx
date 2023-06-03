@@ -32,9 +32,9 @@ export function UserPerfil() {
 
     return(
         <Link
-            to='/' 
+            to='../home/settings' 
             className='user-perfil flex flex-row gap-2 justify-center'>
-            <img className="object-scale-down h-8 w-8 rounded-full" src={data.imagem}/>
+            <img className="object-fill h-8 w-8 rounded-full" src={data.imagem}/>
             <span className='flex flex-col justify-center'>{data.nome}</span>
         </Link>
     );
