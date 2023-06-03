@@ -95,16 +95,16 @@ export function Profile() {
 }
 
   return(
-    <div className='w-full min-h-full grid grid-cols-1 grid-flow-row md:grid-cols-12 card-profile content-center gap-8 2xl:gap-8'>
-      <div className='md:col-span-6 lg:col-span-5 2xl:col-span-3 w-full flex flex-col justify-center items-center gap-5 upload'>
-        {typeof profilePic != "string" ? <img className="object-fill h-52 lg:h-80 image-perfil rounded-lg" src={profilePic ? URL.createObjectURL(profilePic) : data.imagem}/> 
-        : <img className="object-fill h-52 lg:h-80 image-perfil rounded-lg" src={data.imagem}/>}
+    <div className='w-full lg:mt-6 2xl:mt-8 min-h-full grid grid-cols-1 grid-flow-row md:grid-cols-12 card-profile content-center gap-8 2xl:gap-8'>
+      <div className='md:col-span-6 lg:col-span-5 2xl:col-span-4 w-full flex flex-col justify-center items-center gap-5 upload'>
+        {typeof profilePic != "string" ? <img className="object-fill h-52 lg:h-80 2xl:h-96 image-perfil rounded-lg" src={profilePic ? URL.createObjectURL(profilePic) : data.imagem}/> 
+        : <img className="object-fill h-52 lg:h-80 2xl:h-96 image-perfil rounded-lg" src={data.imagem}/>}
         <label htmlFor="input-file" className='flex justify-center items-center gap-3 rounded-lg'>{React.createElement(FaUpload)} Nova foto</label>
         <input id='input-file' type='file' accept='.png, .jpg, .jpeg' onChange={handleImageChange}/>
       </div>
 
       <form 
-        className='flex flex-col justify-center text-center items-center gap-5 sm:gap-2 md:col-span-6 lg:col-span-5'
+        className='flex flex-col justify-start text-center items-center gap-5 sm:gap-2 md:col-span-6 lg:col-span-5'
         onSubmit={submitForm}
       >
         <div className='flex flex-col justify-center text-left items-left w-full mx-auto gap-5'>
