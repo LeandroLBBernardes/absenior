@@ -12,6 +12,7 @@ import { ResetPassword } from '../pages/reset-password-page/index.js';
 import { Profile } from '../pages/profile-page/index.js';
 import { Settings } from '../pages/settings-page/index.js';
 import { ChangePassword } from '../pages/change-password-page/index.js';
+import { ConfirmEmailChange } from '../pages/profile-page/confirm-email-change-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -24,13 +25,17 @@ export function PublicRoutes() {
           <Route path="emailresetpassword" element={<EmailResetPassword  />} />
           <Route path="resetpassword" element={<ResetPassword  />} />
           <Route path="*" element={<ErrorPage />} />
+
           <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>}>
             <Route index element={<Resume  />} />
+
             <Route path="settings" element={<Settings />}>
               <Route index element={<Profile  />} />
               <Route path="password" element={<ChangePassword  />} />
             </Route>
           </Route>
+
+          <Route path="confirmemailchange" element={<ProtectedRoute><ConfirmEmailChange /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

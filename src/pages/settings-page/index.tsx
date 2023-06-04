@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import './styles.scss'
 import React, { useState } from 'react';
 import { ImVolumeHigh } from "react-icons/im"
@@ -7,9 +7,12 @@ import { textToSpeech } from './utils';
 import { ptBr } from '../../config/i18n/generals-pt-br';
 
 export function Settings() {
+  const location = useLocation();
+  const pathName: string = location.pathname;
+
   const initialButtonGroup = [
-    {id: 0, icon: FaUserAlt, text: 'Perfil', isDisable: false, page: '../settings'},
-    {id: 1, icon: FaLock, text: 'Senha', isDisable: true, page:  '../settings/password'}
+    {id: 0, icon: FaUserAlt, text: 'Perfil', isDisable: pathName.includes('password') ? true : false, page: '../settings'},
+    {id: 1, icon: FaLock, text: 'Senha', isDisable: pathName.includes('password') ? false : true, page:  '../settings/password'}
   ];
 
   const [buttonGroup, setButtonGroup] = useState(initialButtonGroup);

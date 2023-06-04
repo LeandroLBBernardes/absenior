@@ -17,7 +17,7 @@ export function InputForm(props: IInputForm ) {
                 autoComplete='off'
                 onChange={props.onValueChange}
                 disabled={props.isDisable ? props.isDisable : false}
-                value={props.value ? props.value : ''}
+                value={props.value && props.value}
             />
         </div>
     );

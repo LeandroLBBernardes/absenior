@@ -108,8 +108,47 @@ export async function updateUserNameEmail(userId: string, user: IUser) {
     try {
         const { error } = await supabase
         .from('usuarios')
-        .update({nome: user.name, email: user.email})
+        .update({nome: user.name})
         .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function updateUserEmail(userId: string, email: string) {
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({email: email})
+        .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function updateLoginEmail(email: string) {
+    try {
+        const { error } = await supabase.auth.updateUser({email: email})
+
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function updateLoginPassword(password: string) {
+    try {
+        const { error } = await supabase.auth.updateUser({password: password})
 
         if(error) {
             throw new Error(error.message);

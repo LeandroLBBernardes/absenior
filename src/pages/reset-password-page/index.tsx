@@ -25,7 +25,9 @@ export function ResetPassword() {
         }));
     }
 
-    const updateUser = () => {
+    const updateUser = (eventSubmit: any) => {
+        eventSubmit.preventDefault();
+
         if(userData.password === userData.confirmpassword 
         && userData.password.length >= 6) {
             verifyOTP();
@@ -110,10 +112,11 @@ export function ResetPassword() {
 
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full'>
-            <div className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'>
+            <form className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'
+            onSubmit={updateUser}>
                 <div className='text-center'>
                     <span>Recuperar Senha</span>
-                    <button className='speech' onClick={voiceToText}>
+                    <button className='speech' onClick={voiceToText} type='button'>
                         <img src={Speech} />
                     </button>
                 </div>
@@ -135,9 +138,9 @@ export function ResetPassword() {
                         onValueChange={handleChange}
                     />
                 </div>
-                <button className='w-full absenior-button' onClick={updateUser}>Atualizar Senha</button>
+                <button className='w-full absenior-button' type='submit'>Atualizar Senha</button>
                 <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a>
-            </div>
+            </form>
             <LateralLoginImage />
         </div>
     );

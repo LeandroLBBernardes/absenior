@@ -4,7 +4,7 @@ import { FaCheck, FaUpload} from 'react-icons/fa';
 import './styles.scss'
 import { useAuth } from '../../hooks/user-auth';
 import { useMutation, useQuery } from 'react-query';
-import { getUser, updateUserNameEmail, uploadUserFilePic } from '../../services/users-service/users-supabase';
+import { getUser, updateLoginEmail, updateUserNameEmail, uploadUserFilePic } from '../../services/users-service/users-supabase';
 import { LoadingPage } from '../loading-page';
 import { IUser } from '../../interfaces/user-interface.interface';
 import Swal from 'sweetalert2';
@@ -34,8 +34,14 @@ export function Profile() {
     mutationFn: ({userId, file}: any) => {
         return uploadUserFilePic(userId, file, data.imagem.slice(73));
     },
-    onError: () => {
+    onSuccess: () => {
       refetch();
+    }
+  });
+
+  const mutationEmail = useMutation({
+    mutationFn: ({userData}: any) => {
+        return updateLoginEmail(userData.email);
     }
   });
 
@@ -79,6 +85,7 @@ export function Profile() {
     if(validateNameNotEmpty(userData.name) && validateEmailNotEmpty(userData.email)) {
       mutation.mutate({userId:user.id, userData: userData});
       mutationImage.mutate({userId: user.id, file: profilePic});
+      mutationEmail.mutate({userData: userData});
     }
   }
 

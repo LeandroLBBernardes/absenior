@@ -25,7 +25,8 @@ export function EmailResetPassword() {
         }));
     }
 
-    const sendEmail = async () => {
+    const sendEmail = async (eventSubmit: any) => {
+        eventSubmit.preventDefault();
         setLoading(true);
         
         try {
@@ -92,10 +93,11 @@ export function EmailResetPassword() {
 
     return(
         <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full'>
-            <div className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'>
+            <form className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'
+            onSubmit={sendEmail}>
                 <div className='text-center'>
                     <span>Esqueceu a senha?</span>
-                    <button className='speech' onClick={voiceToText}>
+                    <button className='speech' onClick={voiceToText} type="button">
                         <img src={Speech} />
                     </button>
                 </div>
@@ -112,14 +114,14 @@ export function EmailResetPassword() {
                 </div>
                 {!loading ? (
                     <>
-                        <button className='w-full absenior-button' onClick={sendEmail}>Enviar Email</button>
+                        <button className='w-full absenior-button' type='submit'>Enviar Email</button>
                         <p>Ao clicar no botão você receberá por email um link para cadastrar sua nova senha.</p>
                         <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a> 
                     </>
                 ) : (
                     <img src={LoadingGif} className='loading' />
                 )}    
-            </div>
+            </form>
             <LateralLoginImage />
         </div>
     );
