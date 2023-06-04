@@ -13,6 +13,7 @@ import { Profile } from '../pages/profile-page/index.js';
 import { Settings } from '../pages/settings-page/index.js';
 import { ChangePassword } from '../pages/change-password-page/index.js';
 import { ConfirmEmailChange } from '../pages/profile-page/confirm-email-change-page/index.js';
+import { MainMenu } from '../pages/menu/main-menu-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -32,6 +33,10 @@ export function PublicRoutes() {
             <Route path="settings" element={<Settings />}>
               <Route index element={<Profile  />} />
               <Route path="password" element={<ChangePassword  />} />
+            </Route>
+
+            <Route path="menu">
+              <Route index element={<MainMenu  />} />
             </Route>
           </Route>
 

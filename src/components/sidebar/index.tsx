@@ -13,7 +13,7 @@ export default function SideBar() {
 
     const menus = [
         { name: "Home", link: "../home", icon: MdHome },
-        { name: "Menu", link: "/", icon: MdDashboard },
+        { name: "Menu", link: "../home/menu", icon: MdDashboard },
         { name: "Perfil", link: "../home/settings", icon: MdSettings },
         { name: "Sair", link: "#", icon: FaDoorOpen, click: () => {logoutSystem()}}
     ];
