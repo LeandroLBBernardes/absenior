@@ -89,12 +89,12 @@ export default function SideBar() {
                         {menu?.name}
                         </h2>
                         <h2
-                        className={`${open && "hidden"} 
+                        className={`${open && "md:hidden"} 
                                 absolute left-18 bg-white font-semibold whitespace-pre
                                 text-absenior-background rounded-md drop-shadow-lg 
                                 px-0 py-0 w-0 overflow-hidden group-hover:px-2 
                                 group-hover:py-1 group-hover:left-24 group-hover:duration-100 
-                                group-hover:w-fit`}
+                                group-hover:w-fit hidden md:flex`}
                         >
                         {menu?.name}
                         </h2>
@@ -122,12 +122,12 @@ export default function SideBar() {
                         {menu?.name}
                     </h2>
                     <h2
-                        className={`${open && "hidden"} 
+                        className={`${open && "md:hidden"} 
                             absolute left-18 bg-white font-semibold whitespace-pre
                             text-absenior-background rounded-md drop-shadow-lg 
                             px-0 py-0 w-0 overflow-hidden group-hover:px-2 
                             group-hover:py-1 group-hover:left-24 group-hover:duration-100 
-                            group-hover:w-fit`}
+                            group-hover:w-fit hidden md:flex`}
                     >
                         {menu?.name}
                     </h2>
