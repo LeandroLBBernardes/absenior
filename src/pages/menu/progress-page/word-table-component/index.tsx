@@ -110,19 +110,18 @@ export function WordTable() {
                 search != ''
                   ? searchWords?.map((searchWord: any, index: number) => (
                     <tr className='table-row' key={index}>
-                      <td className='p-1'><img className="h-10" src={searchWord.imagem} /></td>
-                      <td className='p-1'>{searchWord.descricao} </td>
-                      <td className='p-1'><span onClick={() => speech.textToSpeech(searchWord.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
-                      <td className='p-1 last-item-table'>+4</td>
+                      <td className=''><img className="h-10" src={searchWord.imagem} /></td>
+                      <td className=''>{searchWord.descricao} </td>
+                      <td className=''><span onClick={() => speech.textToSpeech(searchWord.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
+                      <td className='last-item-table'>+4</td>
                     </tr>
                   ))
                   : words?.map((word: any, index: number) => (
                       <tr className='table-row' key={index}>
-                        <td className='p-1'><img className="h-10" src={word.imagem} /></td>
-                        <td className='p-1'>{word.descricao}</td>
-                        <td className='p-1 hidden lg:table-cell'>TES-TE </td>
-                        <td className='p-1'><span onClick={() => speech.textToSpeech(word.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
-                        <td className='p-1 last-item-table'>+4</td>
+                        <td className=''><img className="h-10" src={word.imagem} /></td>
+                        <td className=''>{word.descricao}</td>
+                        <td className=''><span onClick={() => speech.textToSpeech(word.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
+                        <td className='last-item-table'>+4</td>
                       </tr>
                   ))
                 }
