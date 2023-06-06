@@ -16,7 +16,7 @@ export function MainMenu() {
   const listCard: Array<ICardMenuComponent> = [
     {image: ImageCardActivity, description: 'Atividades', color: '#B5CCFF', link:'/'},
     {image: ImageCardPratice, description: 'Praticar Escrita', color: '#FBFFC9', link:'/'},
-    {image: ImageCardProgress, description: 'Progresso', color: '#FFCEDF', link:'/'},
+    {image: ImageCardProgress, description: 'Progresso', color: '#FFCEDF', link:'../progress'},
     {image: ImageCardAchivemente, description: 'Conquistas', color: '#99BEA3', link:'/'},
     {image: ImageCardTasks, description: 'Tarefas', color: '#E7AB76', link:'/'},
     {image: ImageCardSupport, description: 'Apoio ', color: '#E48888', link:'/', externalLink: true}

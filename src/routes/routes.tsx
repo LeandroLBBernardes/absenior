@@ -14,6 +14,7 @@ import { Settings } from '../pages/settings-page/index.js';
 import { ChangePassword } from '../pages/change-password-page/index.js';
 import { ConfirmEmailChange } from '../pages/profile-page/confirm-email-change-page/index.js';
 import { MainMenu } from '../pages/menu/main-menu-page/index.js';
+import { ProgressPage } from '../pages/menu/progress-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -38,6 +39,8 @@ export function PublicRoutes() {
             <Route path="menu">
               <Route index element={<MainMenu  />} />
             </Route>
+
+            <Route path="progress" element={<ProgressPage />} />
           </Route>
 
           <Route path="confirmemailchange" element={<ProtectedRoute><ConfirmEmailChange /></ProtectedRoute>} />

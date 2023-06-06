@@ -65,7 +65,6 @@ export async function getWordCount(userId: string): Promise<number | null | unde
         }
 
         return count;
-
     } catch(error) {
         console.log(error);
     }
@@ -231,5 +230,35 @@ async function uploadNewFile(userId: string, file: any) {
         }
     } catch(error) {
         updateExistFile(userId, file);
+    }
+}
+
+export async function getUserWords(userId: string) {
+    try {
+        // const { data, error } = await supabase
+        // .from('palavras_usuarios')
+        // .select('*')
+        // .eq('idUsuario', userId)
+
+        let { data, error } = await supabase
+        .from('palavras_usuarios')
+        .select(`
+            idUsuario,
+            palavras (
+                idPalavra,
+                descricao,
+                imagem
+            )
+        `)
+        .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+
+        return data;
+
+    } catch(error) {
+        console.log(error);
     }
 }
