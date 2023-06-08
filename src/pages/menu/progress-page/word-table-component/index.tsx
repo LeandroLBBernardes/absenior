@@ -86,7 +86,7 @@ export function WordTable() {
   });
 
   return(
-    <div className='lg:pt-10 progress-table w-full flex flex-col gap-3 lg:gap-5'>
+    <div className='lg:pt-10 progress-table w-full flex flex-col gap-6'>
           <div className='flex flex-col justify-between lg:items-center lg:flex-row w-full'>
             <div className='flex gap-3 items-center'>
               <h1 className='md:text-xl lg:2xl'>Palavras Aprendidas</h1>
@@ -113,7 +113,7 @@ export function WordTable() {
                       <td className=''><img className="h-10" src={searchWord.imagem} /></td>
                       <td className=''>{searchWord.descricao} </td>
                       <td className=''><span onClick={() => speech.textToSpeech(searchWord.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
-                      <td className='last-item-table'>+4</td>
+                      <td className='last-item-table hidden md:table-cell'>+4</td>
                     </tr>
                   ))
                   : words?.map((word: any, index: number) => (
@@ -121,7 +121,7 @@ export function WordTable() {
                         <td className=''><img className="h-10" src={word.imagem} /></td>
                         <td className=''>{word.descricao}</td>
                         <td className=''><span onClick={() => speech.textToSpeech(word.descricao)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span></td>
-                        <td className='last-item-table'>+4</td>
+                        <td className='last-item-table hidden md:table-cell'>+4</td>
                       </tr>
                   ))
                 }

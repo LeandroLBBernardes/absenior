@@ -7,7 +7,7 @@ import { ImVolumeHigh } from "react-icons/im"
 import { FaCoins } from "react-icons/fa"
 import { MdStars } from "react-icons/md"
 import { CgLoadbarSound } from "react-icons/cg"
-import { getInsigniasCount, getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
+import { getInsigniasCount, getInsigniasDataBaseCount, getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
 import { useAuth } from '../../hooks/user-auth';
 import useUserLevel from '../../hooks/zustand/user-level';
 import { useMutation, useQuery } from 'react-query';
@@ -39,6 +39,10 @@ export function Resume() {
     const {data: countIgnias, isLoading: isLoadingCountInsignias} = useQuery("insignias",() => {
         return getInsigniasCount(user.id);
     });
+
+    const {data: countInsigniasDataBase, isLoading: isLoadingCountInsigniasDataBase} = useQuery("totalInsignias",() => {
+        return getInsigniasDataBaseCount();
+    })
 
     const mutation = useMutation({
         mutationFn: ({userId,level}: any) => {
@@ -74,7 +78,7 @@ export function Resume() {
         }
     },[statusUserData,userData]);
 
-    if(isLoadingUserData || isLoadingCountWord || isLoadingCountInsignias){
+    if(isLoadingUserData || isLoadingCountWord || isLoadingCountInsignias || isLoadingCountInsigniasDataBase){
         return(
             <>
                 <LoadingPage />
@@ -95,7 +99,7 @@ export function Resume() {
 
     const initialPerformanceCard = [
         {id:0, title: convertNumberToString(userData.pontuacao), text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
-        {id:0, title: `${convertNumberToString(countIgnias)}/40`, text: 'Broches Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
+        {id:0, title: `${convertNumberToString(countIgnias)}/${convertNumberToString(countInsigniasDataBase)}`, text: 'Insignias Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
         {id:0, title: convertNumberToString(countWord), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
     ];
 

@@ -1,0 +1,27 @@
+.card-achievements-group {
+  .card-achievements {
+    border: 1px solid #CECECE;
+    border-radius: 15px;
+
+    h1{
+        font-weight: 400;
+        font-size: 24px;
+
+        @media (min-width: 1536px) {
+            font-weight: 400;
+            font-size: 32px;
+        }
+    }
+
+    p {
+        color: #CECECE;
+        font-weight: 600;
+        font-size: 15px;
+
+        @media (min-width: 1536px) {
+            font-weight: 400;
+            font-size: 20px;
+        }
+    }  
+  }
+}

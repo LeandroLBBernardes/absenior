@@ -88,6 +88,23 @@ export async function getInsigniasCount(userId: string): Promise<number | null |
     }
 }
 
+export async function getInsigniasDataBaseCount(): Promise<number | null | undefined> {
+    try {
+        const { count, error } = await supabase
+        .from('insignias')
+        .select('*', { count: 'exact', head: true })
+
+        if(error) {
+            throw new Error(error.message);
+        }
+
+        return count;
+
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 export async function updateUserLevel(userId: string, userLevel: number) {
     try {
         const { error } = await supabase
@@ -235,11 +252,6 @@ async function uploadNewFile(userId: string, file: any) {
 
 export async function getUserWords(userId: string) {
     try {
-        // const { data, error } = await supabase
-        // .from('palavras_usuarios')
-        // .select('*')
-        // .eq('idUsuario', userId)
-
         let { data, error } = await supabase
         .from('palavras_usuarios')
         .select(`
@@ -248,6 +260,33 @@ export async function getUserWords(userId: string) {
                 idPalavra,
                 descricao,
                 imagem
+            )
+        `)
+        .eq('idUsuario', userId)
+
+        if(error) {
+            throw new Error(error.message);
+        }
+
+        return data;
+
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function getUserInsignias(userId: string) {
+    try {
+        const { data, error } = await supabase
+        .from('insignias_usuarios')
+        .select(`
+            idUsuario,
+            insignias (
+                idInsignia,
+                imagem,
+                pontuacao,
+                descricao,
+                elogio
             )
         `)
         .eq('idUsuario', userId)

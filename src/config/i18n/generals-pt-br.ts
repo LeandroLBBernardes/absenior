@@ -15,8 +15,10 @@ export const ptBr = {
     resumePage_TextCard2: 'Clique no nível de aprendizado em que você se encontra. Quanto mais alto o nível, mais difícil serão as palavras.',
     resumePage_Intro: 'Olá, {0}! {1}',
     resumePage_Level: 'Nível de dificuldade, {0} 1 Fácil, 2 Médio, 3 Difícil',
-    resumePage_Performance: 'Desempenho, você possui {0} pontos conquistados, {1} broches liberados e {2} palavras aprendidas',
+    resumePage_Performance: 'Desempenho, você possui {0} pontos conquistados, {1} insignias liberadas e {2} palavras aprendidas',
 
-    settingsPage_Text: 'Ajustes! Na página atual você poderá, alterar sua foto de perfil por alguma de sua escolha, alterar seus dados cadastrados: nome e email, e até sua senha, basta digitar sua antiga senha, logo após, sua nova senha e confirmar sua nova senha.'
+    settingsPage_Text: 'Ajustes! Na página atual você poderá, alterar sua foto de perfil por alguma de sua escolha, alterar seus dados cadastrados: nome e email, e até sua senha, basta digitar sua antiga senha, logo após, sua nova senha e confirmar sua nova senha.',
     
+    achievementsPage_title: 'Veja quantas conquistas você já alcançou!'
+
 }

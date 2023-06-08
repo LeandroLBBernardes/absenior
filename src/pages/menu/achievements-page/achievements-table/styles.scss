@@ -1,0 +1,48 @@
+.achievements-table {
+  h1 {
+    color: #4A4848;
+    font-weight: 400;
+    font-size: 23px;
+  }
+
+  span {
+    color: var(--button);
+    cursor: pointer;
+
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.7);
+    }
+  }
+
+  input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #CACACA;
+    box-shadow: none;
+  }
+
+  button {
+    color: #4A4848;
+  }
+
+  .table-row {
+    height: 80px;
+    box-shadow: inset 0px 11px 2px -10px #CCC;
+    color: #898888;
+    font-size: 21px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+    p {
+      font-weight: 400;
+    }
+    
+    &:last-child {
+      box-shadow: 
+      inset 0px 11px 2px -10px #CCC,
+      inset 0px -11px 2px -10px #CCC;
+    }
+  }
+}
