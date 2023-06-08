@@ -1,0 +1,18 @@
+.activity-carousel {
+    .arrow-button {
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: filter 0.2s;
+  
+        &:hover {
+            color: #474545;
+        }
+
+        &.disable {
+            cursor: auto;
+            color: #D5D4D4;
+        }
+    }
+}

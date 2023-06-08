@@ -14,7 +14,7 @@ import ImageCardTasks from '../../../assets/image-card-tasks.png'
 
 export function MainMenu() {
   const listCard: Array<ICardMenuComponent> = [
-    {image: ImageCardActivity, description: 'Atividades', color: '#B5CCFF', link:'/'},
+    {image: ImageCardActivity, description: 'Atividades', color: '#B5CCFF', link:'../activity'},
     {image: ImageCardPratice, description: 'Praticar Escrita', color: '#FBFFC9', link:'/'},
     {image: ImageCardProgress, description: 'Progresso', color: '#FFCEDF', link:'../progress'},
     {image: ImageCardAchivemente, description: 'Conquistas', color: '#99BEA3', link:'/'},

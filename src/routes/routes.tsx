@@ -15,6 +15,7 @@ import { ChangePassword } from '../pages/change-password-page/index.js';
 import { ConfirmEmailChange } from '../pages/profile-page/confirm-email-change-page/index.js';
 import { MainMenu } from '../pages/menu/main-menu-page/index.js';
 import { ProgressPage } from '../pages/menu/progress-page/index.js';
+import { ActivityPage } from '../pages/menu/activity-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -38,6 +39,10 @@ export function PublicRoutes() {
 
             <Route path="menu">
               <Route index element={<MainMenu  />} />
+            </Route>
+
+            <Route path="activity">
+              <Route index element={<ActivityPage  />} />
             </Route>
 
             <Route path="progress" element={<ProgressPage />} />
