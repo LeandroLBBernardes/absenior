@@ -2,27 +2,12 @@ import './styles.scss'
 import { HeaderMenuPageComponent } from '../../../components/header-menu-pages';
 import { alphabeticLetters, speech } from './utils';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export function PraticePage() {
     const [open, setOpen] = useState(false);
     const [index, setIndex] = useState(0);
     const [letra, setLetra] = useState(alphabeticLetters[index]);
-    const [isfirst, setIsFirst] = useState(true);
-    const [isLast, setIsLast] = useState(false);
-
-    useEffect(() => {
-        if(index == 0) {
-            setIsFirst(true);
-            setIsLast(false);
-        }else if(index == alphabeticLetters.length-1) {
-            setIsFirst(false);
-            setIsLast(true);
-        }else {
-            setIsFirst(false);
-            setIsLast(false);
-        }
-    },[index]);
 
     const setArrow = () => {
         setTimeout(() => {
@@ -79,8 +64,8 @@ export function PraticePage() {
                         {open ? <FiChevronUp /> : <FiChevronDown />}
                     </button>
                     <div className='p-5 md:p-3 lg:py-5 flex flex-row justify-around md:justify-end md:gap-5 lg:justify-between w-full'>
-                        <button className={`absenior-button footer-button-practice ${isfirst && 'disable'}`} onClick={previousLetter}>Letra Anterior</button>
-                        <button className={`absenior-button footer-button-practice ${isLast && 'disable'}`} onClick={nextLetter}>Próxima Letra</button>
+                        <button className={`absenior-button footer-button-practice ${index == 0 && 'disable'}`} onClick={previousLetter}>Letra Anterior</button>
+                        <button className={`absenior-button footer-button-practice ${index == alphabeticLetters.length-1 && 'disable'}`} onClick={nextLetter}>Próxima Letra</button>
                     </div>
                 </div>
                 
