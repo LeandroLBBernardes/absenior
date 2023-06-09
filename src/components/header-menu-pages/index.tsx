@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 type HeaderProps = {
     title: string;
+    complement?: string;
 }
 
 export function HeaderMenuPageComponent(props: HeaderProps) {
@@ -20,10 +21,14 @@ export function HeaderMenuPageComponent(props: HeaderProps) {
 
     return(
         <div className='flex flex-col justify-center items-center gap-3 md:flex-row md:justify-between md:gap-0 md:text-md lg:text-lg pt-8 pb-6'>
-            <div className='flex flex-col md:flex-row gap-3 md:gap-5 head-achievements items-center'>
+            <div className='flex flex-col md:flex-row gap-3 md:gap-3 header-menu-cards items-center'>
             <div className='flex gap-3 items-center'>
-                <h1 className='text-2xl lg:text-3xl'>{props.title}</h1>
-                <span onClick={() => speech.textToSpeech('Conquistas')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
+                <div className='flex gap-2'>
+                    <div className='text-2xl lg:text-3xl flex flex-row gap-1'>
+                        {props.title}
+                    </div>
+                </div>
+                <span onClick={() => speech.textToSpeech(`${props.title} ${props.complement}`)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
             </div>
             <button className='bg-absenior-orange px-2 py-2 rounded-xl text-white flex gap-2 items-center' type='button' onClick={returnScreen}>
                 Voltar {React.createElement(IoReturnUpBack, { size: "28"})}

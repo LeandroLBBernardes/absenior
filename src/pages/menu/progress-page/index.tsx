@@ -22,7 +22,7 @@ export function ProgressPage() {
       <div className='flex flex-col bg-white rounded-3xl card-progress-page p-6 md:px-5 md:pt-2 md:pb-5 lg:px-10 lg:pt-0 lg:pb-5 h-full'>
 
       <div className='flex flex-col justify-center items-center gap-3 md:flex-row md:justify-between md:gap-0 md:text-md lg:text-lg pt-8 pb-6'>
-        <div className='flex flex-col md:flex-row gap-3 md:gap-5 head-progress items-center'>
+        <div className='flex flex-col md:flex-row gap-3 md:gap-3 head-progress items-center'>
           <div className='flex gap-3 items-center'>
             <h1 className='text-2xl lg:text-3xl'>Progresso</h1>
             <span onClick={() => speech.textToSpeech('Progresso')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>

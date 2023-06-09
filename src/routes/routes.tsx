@@ -18,6 +18,7 @@ import { ProgressPage } from '../pages/menu/progress-page/index.js';
 import { ActivityPage } from '../pages/menu/activity-page/index.js';
 import { AchievementsPage } from '../pages/menu/achievements-page/index.js';
 import { ConstructionPage } from '../pages/construction-page/index.js';
+import { PraticePage } from '../pages/menu/practice-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -50,6 +51,7 @@ export function PublicRoutes() {
 
             <Route path="progress" element={<ProgressPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
+            <Route path="practice" element={<PraticePage />} />
           </Route>
 
           <Route path="confirmemailchange" element={<ProtectedRoute><ConfirmEmailChange /></ProtectedRoute>} />

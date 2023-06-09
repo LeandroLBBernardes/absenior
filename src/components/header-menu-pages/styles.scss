@@ -1,0 +1,28 @@
+.header-menu-cards {
+    h1 {
+      font-weight: 400;
+    }
+
+    button {
+      font-size: 14px;
+      padding: 0px 16px;
+      font-weight: 600;
+
+      transition: filter 0.2s;
+
+      &:hover {
+          filter: brightness(0.9);
+      }
+    }
+
+    span {
+      color: var(--button);
+      cursor: pointer;
+
+      transition: filter 0.2s;
+
+      &:hover {
+          filter: brightness(0.7);
+      }
+    }
+  }

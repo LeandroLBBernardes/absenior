@@ -99,7 +99,7 @@ export function Resume() {
 
     const initialPerformanceCard = [
         {id:0, title: convertNumberToString(userData.pontuacao), text: 'Pontos Conquistados', icon: FaCoins, sizeIcon: '28', colorIcon: "text-[#EC6D41]"},
-        {id:0, title: `${convertNumberToString(countIgnias)}/${convertNumberToString(countInsigniasDataBase)}`, text: 'Insignias Liberados', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
+        {id:0, title: `${convertNumberToString(countIgnias)}/${convertNumberToString(countInsigniasDataBase)}`, text: 'Insignias Liberadas', icon: MdStars, sizeIcon: '28', colorIcon: "text-[#F6C66A]"},
         {id:0, title: convertNumberToString(countWord), text: 'Palavras Aprendidas', icon: CgLoadbarSound, sizeIcon: '40', colorIcon: "text-[#508E92]"}
     ];
 
