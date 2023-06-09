@@ -17,6 +17,7 @@ import { MainMenu } from '../pages/menu/main-menu-page/index.js';
 import { ProgressPage } from '../pages/menu/progress-page/index.js';
 import { ActivityPage } from '../pages/menu/activity-page/index.js';
 import { AchievementsPage } from '../pages/menu/achievements-page/index.js';
+import { ConstructionPage } from '../pages/construction-page/index.js';
 
 export function PublicRoutes() {
   return (
@@ -28,6 +29,7 @@ export function PublicRoutes() {
           <Route path="login" element={<Login  />} />
           <Route path="emailresetpassword" element={<EmailResetPassword  />} />
           <Route path="resetpassword" element={<ResetPassword  />} />
+          <Route path="construction" element={<ConstructionPage />} />
           <Route path="*" element={<ErrorPage />} />
 
           <Route path="home" element={<ProtectedRoute><Home /></ProtectedRoute>}>
