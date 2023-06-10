@@ -1,0 +1,44 @@
+.task-card {
+  background: white;
+  cursor: pointer;
+  border: 1px solid #dddcdc;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+
+  transition: filter 0.2s;
+
+  &:hover {
+      filter: brightness(0.9);
+  }
+
+  .type-task {
+    color: white;
+    font-weight: 600;
+    background: var(--button);
+    font-size: 12px;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 24px;
+  }
+
+  span {
+    color: var(--button);
+    cursor: pointer;
+
+    transition: filter 0.2s;
+
+    &:hover {
+        filter: brightness(0.7);
+    }
+  }
+
+  button {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+
+    &.del-button {
+      background: #EF2525;
+    }
+  }
+}

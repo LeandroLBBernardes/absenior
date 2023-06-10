@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 type HeaderProps = {
     title: string;
     complement?: string;
+    path?: string;
 }
 
 export function HeaderMenuPageComponent(props: HeaderProps) {
@@ -16,6 +17,10 @@ export function HeaderMenuPageComponent(props: HeaderProps) {
     const navigate = useNavigate();
 
     const returnScreen = ():any => {
+        if(props.path) {
+            return navigate(props.path);
+        }
+
         return navigate('../../home/menu');
     }
 
@@ -28,7 +33,7 @@ export function HeaderMenuPageComponent(props: HeaderProps) {
                         {props.title}
                     </div>
                 </div>
-                <span onClick={() => speech.textToSpeech(`${props.title} ${props.complement}`)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
+                <span onClick={() => speech.textToSpeech(`${props.title} ${props.complement ? props.complement : ''}`)}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
             </div>
             <button className='bg-absenior-orange px-2 py-2 rounded-xl text-white flex gap-2 items-center' type='button' onClick={returnScreen}>
                 Voltar {React.createElement(IoReturnUpBack, { size: "28"})}

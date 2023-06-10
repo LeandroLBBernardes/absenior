@@ -24,8 +24,6 @@ export function Register() {
             ...prevUser,
             [event.target.name]: event.target.value
         }));
-
-        console.log(dataUser.password)
     }
 
     const submitForm = async (eventSubmit: any) => {

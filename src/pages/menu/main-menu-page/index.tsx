@@ -18,7 +18,7 @@ export function MainMenu() {
     {image: ImageCardPratice, description: 'Praticar Escrita', color: '#FBFFC9', link:'../practice'},
     {image: ImageCardProgress, description: 'Progresso', color: '#FFCEDF', link:'../progress'},
     {image: ImageCardAchivemente, description: 'Conquistas', color: '#99BEA3', link:'../achievements'},
-    {image: ImageCardTasks, description: 'Tarefas', color: '#E7AB76', link:'../../construction'},
+    {image: ImageCardTasks, description: 'Tarefas', color: '#E7AB76', link:'../homework'},
     {image: ImageCardSupport, description: 'Apoio ', color: '#E48888', link:'../../construction', externalLink: true}
   ];
 

@@ -19,6 +19,9 @@ import { ActivityPage } from '../pages/menu/activity-page/index.js';
 import { AchievementsPage } from '../pages/menu/achievements-page/index.js';
 import { ConstructionPage } from '../pages/construction-page/index.js';
 import { PraticePage } from '../pages/menu/practice-page/index.js';
+import { HomeWorkPage } from '../pages/menu/homework-page/index.js';
+import { AddTask } from '../pages/menu/homework-page/add-task/index.js';
+import { VisualizeTask } from '../pages/menu/homework-page/visualize-task/index.js';
 
 export function PublicRoutes() {
   return (
@@ -52,6 +55,9 @@ export function PublicRoutes() {
             <Route path="progress" element={<ProgressPage />} />
             <Route path="achievements" element={<AchievementsPage />} />
             <Route path="practice" element={<PraticePage />} />
+            <Route path="homework" element={<HomeWorkPage />} />
+            <Route path="addtask" element={<AddTask />} />
+            <Route path="visualizehomework" element={<VisualizeTask />} />
           </Route>
 
           <Route path="confirmemailchange" element={<ProtectedRoute><ConfirmEmailChange /></ProtectedRoute>} />
