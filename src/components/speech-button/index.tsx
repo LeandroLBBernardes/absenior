@@ -3,7 +3,7 @@ import { TextToSpeech } from '../../services/voice/voice-service';
 import './styles.scss'
 import React from 'react';
 
-export function SpeechButton(props: {text:string}) {
+export function SpeechButton(props: {text:string, size?: number}) {
   const speech: TextToSpeech = new TextToSpeech();
 
   const textToSpeech = (text: string) => {
@@ -12,7 +12,7 @@ export function SpeechButton(props: {text:string}) {
 
   return(
     <span onClick={() => textToSpeech(props.text)} className='speech-button'>
-      {React.createElement(ImVolumeHigh, { size: "28"})}
+      {React.createElement(ImVolumeHigh, { size: `${props.size ? props.size : 28}`})}
     </span>
   );
 }

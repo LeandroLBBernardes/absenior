@@ -9,7 +9,6 @@ import { MdStars } from "react-icons/md"
 import { CgLoadbarSound } from "react-icons/cg"
 import { getInsigniasCount, getInsigniasDataBaseCount, getUser, getWordCount, updateUserLevel } from '../../services/users-service/users-supabase';
 import { useAuth } from '../../hooks/user-auth';
-import useUserLevel from '../../hooks/zustand/user-level';
 import { useMutation, useQuery } from 'react-query';
 import { LoadingPage } from '../loading-page';
 import { textToSpeech } from './utils';
@@ -25,8 +24,6 @@ export function Resume() {
     const { user }: any = useAuth();
     
     const [difficultyButtons, setDifficultyButtons] = useState(initialDifficultyButtons);
-
-    const setUserLevel = useUserLevel(state => state.setLevel);
 
     const {status: statusUserData, data: userData, isLoading: isLoadingUserData, refetch: refetchUser} = useQuery("usuarios",() => {
         return getUser(user.id);
@@ -68,7 +65,6 @@ export function Resume() {
             }
         });
 
-        setUserLevel(index+1);
         setDifficultyButtons(nextDifficultyButtons);
     }
 

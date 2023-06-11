@@ -24,7 +24,7 @@ export function ActivityPage() {
 
     const cardList = [
         {id: 1, title: 'Complete sílabas', subTitle: 'Selecione as sílabas para formar a palavra.', imagem: AtividadeSilabas, link: '/'},
-        {id: 2, title: 'Forme palavras', subTitle: 'Selecione as letras para formar a palavra.', imagem: AtividadePalavras, link: '/'},
+        {id: 2, title: 'Forme palavras', subTitle: 'Selecione as letras para formar a palavra.', imagem: AtividadePalavras, link: 'formwords'},
         {id: 3, title: 'Complete a frase', subTitle: 'Selecione a palavra que complete a frase', imagem: AtividadeFrases, link: '/'},
         {id: 4, title: 'Forme frases', subTitle: 'Selecione as palavras para formar a frase.', imagem: AtividadeFrasesPalavras, link: '/'},
         {id: 5, title: 'Ligue Imagem', subTitle: 'Selecione a imagem e a palavra correspondente.', imagem: AtividadeImagens, link: '/'},

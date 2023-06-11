@@ -93,6 +93,7 @@ export function ActivityCarousel({cardListPros}: any) {
                         title={card.title}
                         subTitle={card.subTitle}
                         imagem={card.imagem}
+                        link={card.link}
                     />
                 ))}
             </div>

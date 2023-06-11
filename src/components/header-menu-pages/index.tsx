@@ -10,6 +10,7 @@ type HeaderProps = {
     title: string;
     complement?: string;
     path?: string;
+    noProfile?: boolean;
 }
 
 export function HeaderMenuPageComponent(props: HeaderProps) {
@@ -25,7 +26,7 @@ export function HeaderMenuPageComponent(props: HeaderProps) {
     }
 
     return(
-        <div className='flex flex-col justify-center items-center gap-3 md:flex-row md:justify-between md:gap-0 md:text-md lg:text-lg pt-8 pb-6'>
+        <div className='flex flex-col justify-center items-center gap-3 md:flex-row md:justify-between md:gap-0 md:text-md lg:text-lg pt-8 pb-6 md:pb-3 lg:pb-6'>
             <div className='flex flex-col md:flex-row gap-3 md:gap-3 header-menu-cards items-center'>
             <div className='flex gap-3 items-center'>
                 <div className='flex gap-2'>
@@ -39,7 +40,10 @@ export function HeaderMenuPageComponent(props: HeaderProps) {
                 Voltar {React.createElement(IoReturnUpBack, { size: "28"})}
             </button>
             </div>
-            <UserPerfil />
+            <div className={`${props.noProfile && 'hidden'}`}>
+                <UserPerfil />
+            </div>
+            
         </div>
     );
 }
