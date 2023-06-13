@@ -151,7 +151,7 @@ export function ActivityFormarPalavras() {
 
                 <div className='w-full h-full flex flex-col gap-3 md:grid md:grid-cols-2 lg:flex lg:flex-col mb-3'>
                     <div className='w-full h-full flex flex-col justify-start lg:justify-center items-center text-center gap-5'>
-                        <img className='w-80 md:w-56 lg:w-56 2xl:w-96' src={dataWord[0].imagem}/>
+                        <img className='w-80 max-h-80 md:w-56 lg:w-56 lg:max-h-56 2xl:w-96 2xl:max-h-96' src={dataWord[0].imagem}/>
                         <div className='flex justify-center items-center text-center gap-3'>
                             <h1 className='text-xl font-semibold uppercase'>{formedWord}</h1>
                             <div className='delete-button' onClick={cleanFormedWord}>
@@ -161,9 +161,9 @@ export function ActivityFormarPalavras() {
                         </div>
                     </div>
                     <div className='flex justify-center items-center text-center w-full'>
-                        <div className='grid grid-cols-3 lg:grid-cols-12 gap-3 w-full px-5 py-2 buttons-letters place-content-center'>
+                        <div className='grid grid-cols-3 lg:flex gap-3 w-full px-5 py-2 buttons-letters place-content-center'>
                             {charList?.map((char,index) => (
-                                <div key={index} className={`col-span-1 flex flex-col justify-center items-center text-center gap-2`}>
+                                <div key={index} className={`lg:w-24 lg:min-w-18 col-span-1 flex flex-col justify-center items-center text-center gap-2`}>
                                     <button id={index.toString()} className='w-full absenior-button rounded-full' onClick={() => joinLetters(char,index.toString())}>{char}</button>
                                     <SpeechButton text={`Letra: ${char}`} size={22}/>
                                 </div>
