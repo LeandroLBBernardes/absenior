@@ -38,7 +38,7 @@ export function ActivityFormarPalavras() {
 
     const updateUser = useMutation({
         mutationFn: ({wordId, userId}: any) => {
-            return updatePontuationAndWord(wordId, userId, dataUser.pontuacao+4);
+            return updatePontuationAndWord(dataUser.ultimaPalavraAprendida, wordId, userId, dataUser.pontuacao+4, dataUser.nivel);
         },
         onSuccess: () => {
           refetchUser();  

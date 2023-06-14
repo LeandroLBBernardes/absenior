@@ -36,9 +36,9 @@ export function CardMenuComponent(props: ICardMenuComponent) {
     >
       <div className='grid grid-flow-row-dense h-full'>
         <div className='flex flex-col w-full items-center justify-center h-full shadow-md cabecalho-card'>
-          <img className="w-44 lg:w-44 2xl:w-72" src={props.image} />
+          <img className="w-44 lg:w-40 2xl:w-72" src={props.image} />
         </div>
-        <div className='flex flex-col justify-center card-menu-footer h-full py-6 md:py-3 lg:py-2 w-full'>
+        <div className='flex flex-col justify-center card-menu-footer h-full py-6 md:py-3 lg:py-0 w-full'>
           <div className='flex flex-row justify-around gap-2 w-full'>
             <span className='invisible'>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
             <h1 className='text-xl 2xl:text-2xl'>{props.description}</h1>
