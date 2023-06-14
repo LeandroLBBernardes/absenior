@@ -66,8 +66,6 @@ export function ActivityFormarPalavras() {
         );
     }
 
-    console.log(dataWord);
-
     function fillCharList() {
         const word: string = dataWord[0].descricao;
         const numberOfLetters: number = word.length;
