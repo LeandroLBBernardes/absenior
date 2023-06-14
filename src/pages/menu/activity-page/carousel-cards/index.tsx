@@ -80,7 +80,7 @@ export function ActivityCarousel({cardListPros}: any) {
     });
 
     return(
-        <div className='flex w-full activity-carousel'>
+        <div className='flex w-full activity-carousel h-full'>
             <div className='flex flex-col justify-center items-center md:pr-3 lg:px-5'>
                 <div className={`arrow-button ${first && 'disable'}`} onClick={decrementCount}>
                     <FiChevronLeft size={32}/>
