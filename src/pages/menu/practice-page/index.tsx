@@ -23,12 +23,14 @@ export function PraticePage() {
 
     const nextLetter = () => {
         if(index < alphabeticLetters.length-1) {
+            setLetra(alphabeticLetters[index+1]);
             setIndex(index+1);
         }
     }
 
     const previousLetter = () => {
         if(index > 0) {
+            setLetra(alphabeticLetters[index-1]);
             setIndex(index-1);
         }
     }
