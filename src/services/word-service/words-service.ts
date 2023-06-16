@@ -35,6 +35,7 @@ export async function insertuserWord(wordId: number, userId: string): Promise<an
         .from('palavras_usuarios')
         .select('*')
         .eq('idPalavra',wordId)
+        .eq('idUsuario', userId)
 
         if(errorGet) {
             throw new Error(errorGet.message);

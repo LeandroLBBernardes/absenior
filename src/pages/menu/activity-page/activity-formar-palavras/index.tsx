@@ -48,7 +48,7 @@ export function ActivityFormarPalavras() {
 
     const insertInsignia = useMutation({
         mutationFn: ({userId}: any) => {
-            return getInsignia(dataUser.pontuacao, userId);
+            return getInsignia(dataUser.pontuacao+4, userId);
         }
     });
 
