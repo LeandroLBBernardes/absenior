@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { supabase } from "../supabase/supabase";
+import { supabase, supabaseAdmin } from "../supabase/supabase";
 
 export async function getWord(lastWord: string, complexity: number): Promise<any> {
     const lastWorldByLevel: number = getLastWord(lastWord,complexity);
@@ -18,6 +18,21 @@ export async function getWord(lastWord: string, complexity: number): Promise<any
         }
   
         return palavra;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function getRandomWords() {
+    try {
+        const { data, error }: any = await supabaseAdmin
+        .rpc('randomico_final')
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+  
+        return data;
     } catch(error) {
         console.log(error);
     }
@@ -82,6 +97,23 @@ export async function updatePontuationAndSyllables(lastWord: string, wordId: num
         const { error } = await supabase
         .from('usuarios')
         .update({ ultimaPalavraSilabas: newUltimaPalavraAprendida, pontuacao: pontuation})
+        .eq('idUsuario', userId)
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function updatePontuationAndAssociation(lastWord: string, wordId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
+    const newUltimaPalavraAprendida: string = getNewUltimaPalavraAprendida(lastWord, wordId, complexity);
+    
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({ ultimaPalavraAssociacao: newUltimaPalavraAprendida, pontuacao: pontuation})
         .eq('idUsuario', userId)
   
         if(error) {
@@ -166,7 +198,7 @@ export async function insertuserPhrase(phraseId: number, userId: string): Promis
         const { data, error: errorGet } = await supabase
         .from('frases_usuarios')
         .select('*')
-        .eq('idfrase',phraseId)
+        .eq('idFrases', phraseId)
         .eq('idUsuario', userId)
 
         if(errorGet) {
