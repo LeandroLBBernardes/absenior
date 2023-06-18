@@ -139,3 +139,90 @@ export async function insertInsignia(userId: string, idInsignia: number): Promis
         console.log(error);
     }
 }
+
+export async function getPhrase(lastWord: string, complexity: number): Promise<any> {
+    const lastPhraseByLevel: number = getLastWord(lastWord,complexity);
+
+    try {
+        const { data: frase, error }: any = await supabase
+        .from('frases')
+        .select('*')
+        .eq('complexidade', complexity)
+        .gt('idFrases', lastPhraseByLevel)
+        .limit(1)
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+  
+        return frase;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function insertuserPhrase(phraseId: number, userId: string): Promise<any> {
+    try {
+        const { data, error: errorGet } = await supabase
+        .from('frases_usuarios')
+        .select('*')
+        .eq('idfrase',phraseId)
+        .eq('idUsuario', userId)
+
+        if(errorGet) {
+            throw new Error(errorGet.message);
+        }else if (data.length == 0) {
+            const { error } = await supabase
+            .from('frases_usuarios')
+            .insert([
+                { 
+                    idFrases: phraseId, 
+                    idUsuario: userId 
+                }
+            ])
+      
+            if(error) {
+                throw new Error(error.message);
+            }
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function insertWordFromPhrase(phrase: string, userId: string) {
+    try {
+        const { data, error } = await supabase
+        .rpc('add_word_in_phrase',{phrase: phrase})
+
+        if(error) {
+            throw new Error(error.message);
+        }else if (data.length > 0) {
+            for(let i = 0; i < data.length; i++) {
+                if(data[i].imagem != null)
+                    insertuserWord(data[i].idPalavra,userId);
+            }
+        }    
+    } catch(error) {
+        console.log(error);
+    }
+}
+
+export async function updatePontuationAndPhrase(lastPhrase: string, phraseId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
+    const newUltimaFraseAprendida: string = getNewUltimaPalavraAprendida(lastPhrase, phraseId, complexity);
+    
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({ ultimaFrase: newUltimaFraseAprendida, pontuacao: pontuation})
+        .eq('idUsuario', userId)
+  
+        if(error) {
+            throw new Error(error.message);
+        }else {
+
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
