@@ -26,6 +26,7 @@ import { ActivityFormarPalavras } from '../pages/menu/activity-page/activity-for
 import { ActivityFormarSilabas } from '../pages/menu/activity-page/activity-formar-silaba/index.js';
 import { ActivityFormarFrases } from '../pages/menu/activity-page/activity-formar-frases/index.js';
 import { ActivityJogoAssociacao } from '../pages/menu/activity-page/activity-jogo-associacao/index.js';
+import { ActivityLigarImagens } from '../pages/menu/activity-page/activity-ligar-imagens/index.js';
 
 export function PublicRoutes() {
   return (
@@ -58,6 +59,7 @@ export function PublicRoutes() {
               <Route path="formsyllables" element={<ActivityFormarSilabas />} />
               <Route path="formphrases" element={<ActivityFormarFrases />} />
               <Route path="association" element={<ActivityJogoAssociacao />} />
+              <Route path="linkimage" element={<ActivityLigarImagens />} />
             </Route>
 
             <Route path="progress" element={<ProgressPage />} />

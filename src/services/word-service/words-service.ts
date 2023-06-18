@@ -23,6 +23,28 @@ export async function getWord(lastWord: string, complexity: number): Promise<any
     }
 }
 
+export async function getWord4(lastWord: string, complexity: number): Promise<any> {
+    const lastWorldByLevel: number = getLastWord(lastWord,complexity);
+
+    try {
+        const { data: palavra, error }: any = await supabase
+        .from('palavras')
+        .select('*')
+        .eq('complexidade', complexity)
+        .neq('imagem', null)
+        .gt('idPalavra', lastWorldByLevel)
+        .limit(4)
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+  
+        return palavra;
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 export async function getRandomWords() {
     try {
         const { data, error }: any = await supabaseAdmin
@@ -73,6 +95,12 @@ export async function insertuserWord(wordId: number, userId: string): Promise<an
     }
 }
 
+export async function insertWordsLinkImage(words: Array<any>, userId: string) {
+    words.forEach((word: any) => {
+        insertuserWord(word.idPalavra, userId);
+    });
+}
+
 export async function updatePontuationAndWord(lastWord: string, wordId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
     const newUltimaPalavraAprendida: string = getNewUltimaPalavraAprendida(lastWord, wordId, complexity);
     
@@ -89,6 +117,24 @@ export async function updatePontuationAndWord(lastWord: string, wordId: number, 
         console.log(error);
     }
 }
+
+export async function updatePontuationAndLinkImage(lastWord: string, wordId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
+    const newUltimaPalavraAprendida: string = getNewUltimaPalavraAprendida(lastWord, wordId, complexity);
+    
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({ ultimaPalavraLigarImagem: newUltimaPalavraAprendida, pontuacao: pontuation})
+        .eq('idUsuario', userId)
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 
 export async function updatePontuationAndSyllables(lastWord: string, wordId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
     const newUltimaPalavraAprendida: string = getNewUltimaPalavraAprendida(lastWord, wordId, complexity);
