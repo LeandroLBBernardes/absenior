@@ -5,31 +5,41 @@ import { RiDeleteBin5Line } from 'react-icons/ri';
 import { useAuth } from '../../../../hooks/user-auth';
 import { useMutation, useQuery } from 'react-query';
 import { getUser } from '../../../../services/users-service/users-supabase';
-import { getInsignia, getWord, insertuserWord, updatePontuationAndWord } from '../../../../services/word-service/words-service';
+import { getInsignia, getWord, insertuserWord, updatePontuationAndSyllables } from '../../../../services/word-service/words-service';
 import { LoadingPage } from '../../../loading-page';
 import { useState, useEffect } from 'react';
 import { errorAlert, successAlert } from './utils';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-export function ActivityFormarPalavras() {
+export function ActivityFormarSilabas() {
     const { user }: any = useAuth();
     const navigate = useNavigate();
-    const [charList, setCharList] = useState([] as Array<string>);
-    const [formedWord, setFormedWord] = useState('');
+    const [syllablesList, setSyllablesList] = useState([] as Array<string>);
+    const [formedWordSyllables, setFormedWordSyllables] = useState('');
     
     let indexList: Array<number> = [];
     
-    const {data: dataUser, isLoading: isLoadingDataUser, refetch: refetchUser} = useQuery(['atividade1-usuario'], () => {
+    const {data: dataUser, isLoading: isLoadingDataUser, refetch: refetchUser} = useQuery(['atividade2-usuario'], () => {
         return getUser(user.id);
     }); 
 
     const userId = dataUser?.idUsuario;
 
-    const {status, data: dataWord, isLoading: isLoadingDataWord, refetch} = useQuery(['atividade1-palavra', dataUser?.ultimaPalavraAprendida, dataUser?.nivel], 
+    const {data: dataWord, isLoading: isLoadingDataWord, refetch: refetchWord} = useQuery(['atividade2-palavra',dataUser?.ultimaPalavraSilabas, dataUser?.nivel], 
     () => {
-        return getWord(dataUser.ultimaPalavraAprendida, dataUser.nivel);
+        return getWord(dataUser.ultimaPalavraSilabas, dataUser.nivel);
     },{
         enabled: !!userId
+    });
+
+    const wordId = dataWord?.length;
+
+    const {status, data: dataSyllables, isLoading: isLoadingSyllables, refetch} = useQuery(['atividade2-silabas',dataUser?.ultimaPalavraSilabas, dataUser?.nivel], 
+    () => {
+        return axios.get(`https://crud-node-7js5-git-master-leandrolbbernardes.vercel.app/silabas/${dataWord[0].descricao}`).then(response => response.data)
+    },{
+        enabled: !!wordId
     });
 
     const insertWord = useMutation({
@@ -40,10 +50,11 @@ export function ActivityFormarPalavras() {
 
     const updateUser = useMutation({
         mutationFn: ({wordId, userId}: any) => {
-            return updatePontuationAndWord(dataUser.ultimaPalavraAprendida, wordId, userId, dataUser.pontuacao+4, dataUser.nivel);
+            return updatePontuationAndSyllables(dataUser.ultimaPalavraSilabas, wordId, userId, dataUser.pontuacao+4, dataUser.nivel);
         },
         onSuccess: () => {
-          refetchUser();  
+          refetchUser();
+          refetchWord();  
           refetch();
         }
     });
@@ -56,32 +67,31 @@ export function ActivityFormarPalavras() {
 
     useEffect(() => {
         if(status == "success") {
-            if(dataWord.length > 0)
-                fillCharList();
+            if(dataSyllables.length > 0)
+                fillSyllablesList();
         }
-    }, [status,dataWord]);
+    }, [status,dataSyllables]);
 
 
-    if(isLoadingDataWord || isLoadingDataUser) {
+    if(isLoadingDataWord || isLoadingDataUser || isLoadingSyllables) {
         return(
             <LoadingPage />
         );
     }
 
-    function fillCharList() {
-        const word: string = dataWord[0].descricao;
-        const numberOfLetters: number = word.length;
+    function fillSyllablesList() {
+        const numberOfLetters: number = dataSyllables.length;
         let auxArray: Array<string> = [];
 
         for(let i = 0; i < numberOfLetters; i++) {
             const randomNumber: number = randomIndex(numberOfLetters);
 
             auxArray = [...auxArray, 
-                word[randomNumber]
+                dataSyllables[randomNumber]
             ];
         }
         
-        setCharList(auxArray);
+        setSyllablesList(auxArray);
         indexList = [];
     }
 
@@ -97,24 +107,25 @@ export function ActivityFormarPalavras() {
     }
 
     const cleanFormedWord = () => {
-        const numberOfLetter: number = dataWord[0].descricao.length;
+        const numberOfLetter: number = syllablesList.length;
 
         for(let i = 0; i < numberOfLetter; i++) {
             const button: any = document.getElementById(i.toString());
+            console.log();
             button.disabled = false;
         }
 
-        setFormedWord('');
+        setFormedWordSyllables('');
     }
     
     const joinLetters = (letter: string, index: string) => {
         const button: any = document.getElementById(index);
         button.disabled = true;
-        setFormedWord(formedWord+letter);
+        setFormedWordSyllables(formedWordSyllables+letter);
     }
 
     const confirmWord = () => {
-        if(formedWord.toUpperCase() != dataWord[0].descricao.toUpperCase()) {
+        if(formedWordSyllables.toUpperCase() != dataWord[0].descricao.toUpperCase()) {
             errorAlert();
         }else {
             successAlert();
@@ -127,7 +138,7 @@ export function ActivityFormarPalavras() {
     }
 
     return(
-        <div className='formar-palavras min-h-screen w-full p-5'>
+        <div className='formar-silabas min-h-screen w-full p-5'>
             {
             dataWord.length == 0
             ?
@@ -139,9 +150,9 @@ export function ActivityFormarPalavras() {
                     </div>
                 </div>
             : 
-                <div className='card-formar-palavras bg-white rounded-3xl w-full h-full px-8 flex flex-col'>
+                <div className='card-formar-silabas bg-white rounded-3xl w-full h-full px-8 flex flex-col'>
                 <HeaderMenuPageComponent 
-                    title="Selecione as letras para formar a palavra que represente a imagem abaixo: "
+                    title="Selecione as sílabas para formar a palavra que represente a imagem abaixo: "
                     noProfile={true}
                     path='../../../home/activity'
                 />
@@ -150,19 +161,19 @@ export function ActivityFormarPalavras() {
                     <div className='w-full h-full flex flex-col justify-start lg:justify-center items-center text-center gap-5'>
                         <img className='w-80 max-h-80 md:w-56 lg:w-56 lg:max-h-56 2xl:w-96 2xl:max-h-96' src={dataWord[0].imagem}/>
                         <div className='flex justify-center items-center text-center gap-3'>
-                            <h1 className='text-xl font-semibold uppercase'>{formedWord}</h1>
+                            <h1 className='text-xl font-semibold uppercase'>{formedWordSyllables}</h1>
                             <div className='delete-button' onClick={cleanFormedWord}>
                                 <RiDeleteBin5Line size={22} />
                             </div>
-                            <SpeechButton text={`Palavra formada: ${formedWord == '' ? 'nenhuma' : formedWord}, Imagem: ${dataWord[0].descricao}`} size={22}/>
+                            <SpeechButton text={`Palavra formada: ${formedWordSyllables == '' ? 'nenhuma' : formedWordSyllables}, Imagem: ${dataWord[0].descricao}`} size={22}/>
                         </div>
                     </div>
                     <div className='flex justify-center items-center text-center w-full'>
                         <div className='grid grid-cols-3 lg:flex gap-3 w-full px-5 py-2 buttons-letters place-content-center'>
-                            {charList?.map((char,index) => (
+                            {syllablesList?.map((syllable,index) => (
                                 <div key={index} className={`lg:w-24 lg:min-w-18 col-span-1 flex flex-col justify-center items-center text-center gap-2`}>
-                                    <button id={index.toString()} className='w-full absenior-button rounded-full' onClick={() => joinLetters(char,index.toString())}>{char}</button>
-                                    <SpeechButton text={`Letra: ${char}`} size={22}/>
+                                    <button id={index.toString()} className='w-full absenior-button rounded-full' onClick={() => joinLetters(syllable,index.toString())}>{syllable}</button>
+                                    <SpeechButton text={`Letra: ${syllable}`} size={22}/>
                                 </div>
                             ))}
                         </div>

@@ -23,6 +23,7 @@ import { HomeWorkPage } from '../pages/menu/homework-page/index.js';
 import { AddTask } from '../pages/menu/homework-page/add-task/index.js';
 import { VisualizeTask } from '../pages/menu/homework-page/visualize-task/index.js';
 import { ActivityFormarPalavras } from '../pages/menu/activity-page/activity-formar-palavras/index.js';
+import { ActivityFormarSilabas } from '../pages/menu/activity-page/activity-formar-silaba/index.js';
 
 export function PublicRoutes() {
   return (
@@ -52,6 +53,7 @@ export function PublicRoutes() {
             <Route path="activity">
               <Route index element={<ActivityPage  />} />
               <Route path="formwords" element={<ActivityFormarPalavras />} />
+              <Route path="formsyllables" element={<ActivityFormarSilabas />} />
             </Route>
 
             <Route path="progress" element={<ProgressPage />} />

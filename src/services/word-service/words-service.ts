@@ -75,6 +75,23 @@ export async function updatePontuationAndWord(lastWord: string, wordId: number, 
     }
 }
 
+export async function updatePontuationAndSyllables(lastWord: string, wordId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
+    const newUltimaPalavraAprendida: string = getNewUltimaPalavraAprendida(lastWord, wordId, complexity);
+    
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({ ultimaPalavraSilabas: newUltimaPalavraAprendida, pontuacao: pontuation})
+        .eq('idUsuario', userId)
+  
+        if(error) {
+            throw new Error(error.message);
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
+
 function getNewUltimaPalavraAprendida(lastWord: string, wordId: number, complexity: number): string {
     const arrayIDPalavras: Array<string> = lastWord.split(',');
 
