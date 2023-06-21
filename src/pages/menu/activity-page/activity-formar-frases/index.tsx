@@ -166,9 +166,9 @@ export function ActivityFormarFrases() {
                         </div>
                     </div>
                     <div className='flex justify-center items-center text-center w-full'>
-                        <div className={`grid grid-cols-2 md:grid-cols-3 lg:${wordList?.length <= 6 ? 'flex' : 'grid-cols-6'} gap-3 w-full px-5 py-2 buttons-letters place-content-center`}>
+                        <div className={`grid grid-cols-2 md:grid-cols-3 lg:${wordList?.length <= 5 ? 'flex' : 'grid-cols-6'} gap-3 w-full px-5 py-2 buttons-letters place-content-center`}>
                             {wordList?.map((word,index) => (
-                                <div key={index} className={`${wordList?.length <= 6 && 'lg:w-64 lg:min-w-18'} col-span-1 flex flex-col justify-center items-center text-center gap-2`}>
+                                <div key={index} className={`${wordList?.length <= 5 && 'lg:w-44 lg:min-w-18'} col-span-1 flex flex-col justify-center items-center text-center gap-2`}>
                                     <button id={index.toString()} className='w-full absenior-button rounded-full' onClick={() => joinLetters(word,index.toString())}>{word}</button>
                                     <SpeechButton text={`${word}`} size={22}/>
                                 </div>
