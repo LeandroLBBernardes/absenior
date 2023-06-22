@@ -111,7 +111,7 @@ export default function ResetPassword() {
 
 
     return(
-        <div className='grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full'>
+        <div className='recover grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 h-screen w-full'>
             <form className='flex flex-col justify-center text-left items-center px-12 sm:px-32 lg:px-32 2xl:px-64 gap-5'
             onSubmit={updateUser}>
                 <div className='text-center'>
@@ -139,7 +139,7 @@ export default function ResetPassword() {
                     />
                 </div>
                 <button className='w-full absenior-button' type='submit'>Atualizar Senha</button>
-                <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a>
+                <p className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</p>
             </form>
             <LateralLoginImage />
         </div>
