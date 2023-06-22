@@ -12,7 +12,7 @@ import { errorAlert, successAlert } from './utils';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export function ActivityFormarSilabas() {
+export default function ActivityFormarSilabas() {
     const { user }: any = useAuth();
     const navigate = useNavigate();
     const [syllablesList, setSyllablesList] = useState([] as Array<string>);

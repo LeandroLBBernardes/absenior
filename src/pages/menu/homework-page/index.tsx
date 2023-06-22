@@ -10,7 +10,7 @@ import { TaskCard } from './card-task';
 import { getAllTasks } from '../../../services/tasks-service/tasks-supabase';
 import { useNavigate } from 'react-router-dom';
 
-export function HomeWorkPage() {
+export default function HomeWorkPage() {
   const { user }: any = useAuth();
   const [tasksList, setTaskLists] = useState([] as Array<any>);
   const [searchTasksList, setSearchTaskLists] = useState([] as Array<any>);

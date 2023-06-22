@@ -9,7 +9,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { insertTask } from '../../../../services/tasks-service/tasks-supabase';
 
-export function AddTask() {
+export default function AddTask() {
   const { user }: any = useAuth();
   const [dataTask, setDataTask] = useState({} as any);
   const [hasSubmit, setHasSubmit] = useState(false);

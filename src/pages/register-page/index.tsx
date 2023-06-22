@@ -13,7 +13,7 @@ import { LateralLoginImage } from '../../components/lateral-login-image';
 import { insertUser } from '../../services/users-service/users-supabase';
 import { LoadingPage } from '../loading-page';
 
-export function Register() {
+export default function Register() {
     const [dataUser, setDataUser] = useState({} as IUser);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();

@@ -12,7 +12,7 @@ import { useState } from 'react';
 import { IUser } from '../../interfaces/user-interface.interface';
 import { LoadingPage } from '../loading-page';
 
-export function EmailResetPassword() {
+export default function EmailResetPassword() {
     const [userData, setUserData] = useState({} as IUser);
     const [loading, setLoading] = useState(false);
     const speech: TextToSpeech = new TextToSpeech();

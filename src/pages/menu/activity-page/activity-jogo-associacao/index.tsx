@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import { errorAlert, successAlert } from './utils';
 import { useNavigate } from 'react-router-dom';
 
-export function ActivityJogoAssociacao() {
+export default function ActivityJogoAssociacao() {
     const { user }: any = useAuth();
     const navigate = useNavigate();
     const [wordList, setWordList] = useState([] as Array<any>);

@@ -14,7 +14,7 @@ import AtividadeFrasesPalavras from '../../../assets/atividade_3.png'
 import AtividadeImagens from '../../../assets/atividade_2.png'
 import AtividadeAssociacao from '../../../assets/atividade_1.png'
 
-export function ActivityPage() {
+export default function ActivityPage() {
     const speech: TextToSpeech = new TextToSpeech();
     const navigate = useNavigate();
 

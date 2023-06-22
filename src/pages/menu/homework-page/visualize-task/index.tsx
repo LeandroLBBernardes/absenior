@@ -5,7 +5,7 @@ import { LoadingPage } from '../../../loading-page';
 import { HeaderMenuPageComponent } from '../../../../components/header-menu-pages';
 import { SpeechButton } from '../../../../components/speech-button';
 
-export function VisualizeTask() {
+export default function VisualizeTask() {
   const searchParams: any = new URLSearchParams(document.location.search);
 
   if(!searchParams.get('idTask')) {

@@ -10,7 +10,7 @@ import { IUser } from '../../interfaces/user-interface.interface';
 import Swal from 'sweetalert2';
 import { validateEmailNotEmpty, validateNameNotEmpty } from './utils';
 
-export function Profile() {
+export default function Profile() {
 
   const { user }: any = useAuth();
   const [userData, setUserData] = useState({} as IUser);

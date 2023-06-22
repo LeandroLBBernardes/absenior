@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { TextToSpeech } from '../../services/voice/voice-service';
 import { LateralLoginImage } from '../../components/lateral-login-image';
 
-export function Main() {
+export default function Main() {
     const navigate = useNavigate();
 
     const navigateToRegister = () => {

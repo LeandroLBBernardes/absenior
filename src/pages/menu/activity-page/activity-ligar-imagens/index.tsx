@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { errorAlert, successAlert } from './utils';
 
-export function ActivityLigarImagens() {
+export default function ActivityLigarImagens() {
     const { user }: any = useAuth();
     const navigate = useNavigate();
     const [wordList, setWordList] = useState(Array<{idPalavra: Number, descricao: String, imagem: String, complexidade: Number}>);

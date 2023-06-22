@@ -12,7 +12,7 @@ import { InputForm } from '../../components/input-form';
 import { ptBr } from '../../config/i18n/generals-pt-br';
 import { LoadingPage } from '../loading-page';
 
-export function Login() {
+export default function Login() {
     const [userData, setUserData] = useState({} as IUser);
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();

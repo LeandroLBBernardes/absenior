@@ -13,7 +13,7 @@ import { useMutation, useQuery } from 'react-query';
 import { LoadingPage } from '../loading-page';
 import { textToSpeech } from './utils';
 
-export function Resume() {
+export default function Resume() {
 
     const initialDifficultyButtons = [
         {id: 0, level: 1, description: "Fácil", isDisable: true},

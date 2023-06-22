@@ -6,7 +6,7 @@ import { FaUserAlt, FaLock } from "react-icons/fa"
 import { textToSpeech } from './utils';
 import { ptBr } from '../../config/i18n/generals-pt-br';
 
-export function Settings() {
+export default function Settings() {
   const location = useLocation();
   const pathName: string = location.pathname;
 

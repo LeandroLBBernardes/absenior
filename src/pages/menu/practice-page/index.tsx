@@ -4,7 +4,7 @@ import { alphabeticLetters, speech } from './utils';
 import { FiChevronUp, FiChevronDown } from 'react-icons/fi';
 import { useState } from 'react';
 
-export function PraticePage() {
+export default function PraticePage() {
     const [open, setOpen] = useState(true);
     const [index, setIndex] = useState(0);
     const [letra, setLetra] = useState(alphabeticLetters[index]);

@@ -11,7 +11,7 @@ import { useState, useEffect } from 'react';
 import { errorAlert, successAlert } from './utils';
 import { useNavigate } from 'react-router-dom';
 
-export function ActivityFormarPalavras() {
+export default function ActivityFormarPalavras() {
     const { user }: any = useAuth();
     const navigate = useNavigate();
     const [charList, setCharList] = useState([] as Array<string>);

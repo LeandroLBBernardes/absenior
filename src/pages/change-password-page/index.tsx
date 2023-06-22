@@ -6,7 +6,7 @@ import { useMutation } from 'react-query';
 import { updateLoginPassword } from '../../services/users-service/users-supabase';
 import { sucessAlert, validateLengthPassword, validateSamePassword } from './utils';
 
-export function ChangePassword() {
+export default function ChangePassword() {
   const [userData, setUserData] = useState({} as {password: string, confirmPassword: string});
 
   const mutation = useMutation({

@@ -4,7 +4,7 @@ import {FaCheckCircle} from 'react-icons/fa'
 import { useAuth } from '../../../hooks/user-auth';
 import { updateUserEmail } from '../../../services/users-service/users-supabase';
 
-export function ConfirmEmailChange() {
+export default function ConfirmEmailChange() {
   const { user }: any = useAuth();
   
   useEffect(() => {

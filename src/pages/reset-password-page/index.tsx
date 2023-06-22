@@ -12,7 +12,7 @@ import { InputForm } from '../../components/input-form';
 import { LateralLoginImage } from '../../components/lateral-login-image';
 import { logoutUser } from '../../services/users-service/users-supabase';
 
-export function ResetPassword() {
+export default function ResetPassword() {
     const [userData, setUserData] = useState({} as IUser);
     const [searchParams] = useSearchParams();
     const speech: TextToSpeech = new TextToSpeech();

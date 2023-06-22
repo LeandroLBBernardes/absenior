@@ -9,7 +9,7 @@ import { ImVolumeHigh } from 'react-icons/im';
 import { WordTable } from './word-table-component';
 import { TextToSpeech } from '../../../services/voice/voice-service';
 
-export function ProgressPage() {
+export default function ProgressPage() {
   const speech: TextToSpeech = new TextToSpeech();
   const navigate = useNavigate();
 
