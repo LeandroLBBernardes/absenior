@@ -156,9 +156,9 @@ export default function ActivityFormarFrases() {
                 />
 
                 <div className='w-full h-full flex flex-col gap-8 mt-8 lg:mt-0 lg:gap-3 md:grid md:grid-cols-1 lg:flex lg:flex-col mb-3'>
-                    <div className='w-full h-full flex flex-col justify-start lg:justify-center items-center text-center gap-5'>
+                    <div className='w-full h-full flex flex-col justify-start lg:justify-center items-center text-center gap-10 lg:gap-3'>
                         <div className='flex justify-center items-center text-center gap-3'>
-                            <h1 className='text-2xl lg:text-4xl font-semibold uppercase'>{selectWordList.join(' ')}</h1>
+                            <h1 className='text-2xl lg:text-2xl 2xl:text-4xl font-semibold uppercase'>{selectWordList.join(' ')}</h1>
                             <div className='delete-button' onClick={cleanFormedWord}>
                                 <RiDeleteBin5Line size={28} />
                             </div>

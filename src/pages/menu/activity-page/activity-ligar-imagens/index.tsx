@@ -27,13 +27,13 @@ export default function ActivityLigarImagens() {
 
     let indexList: Array<number> = [];
     
-    const {data: dataUser, isLoading: isLoadingDataUser, refetch: refetchUser} = useQuery(['atividade1-usuario'], () => {
+    const {data: dataUser, isLoading: isLoadingDataUser, refetch: refetchUser} = useQuery(['atividade7-usuario'], () => {
         return getUser(user.id);
     }); 
 
     const userId = dataUser?.idUsuario;
 
-    const {status, data: dataWord, isLoading: isLoadingDataWord, refetch} = useQuery(['atividade1-palavra', dataUser?.ultimaPalavraLigarImagem, dataUser?.nivel], 
+    const {status, data: dataWord, isLoading: isLoadingDataWord, refetch} = useQuery(['atividade7-palavra', dataUser?.ultimaPalavraLigarImagem, dataUser?.nivel], 
     () => {
         return getWord4(dataUser.ultimaPalavraLigarImagem, dataUser.nivel);
     },{

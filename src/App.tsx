@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { lazy, Suspense } from 'react';
 import { LoadingPage } from './pages/loading-page/index.js';
 import { AuthProvider } from './hooks/user-auth.js';
+import ActivityJogoCompletarFrase from './pages/menu/activity-page/activity-completar-frase/index.js';
 
 const  Login  = lazy(() => import('./pages/login-page/index.js')); 
 const  Main  = lazy(() => import('./pages/main-page/index.js')); 
@@ -64,6 +65,7 @@ export default function App() {
               <Route path="formphrases" element={<Suspense fallback={<LoadingPage />}><ActivityFormarFrases /></Suspense>} />
               <Route path="association" element={<Suspense fallback={<LoadingPage />}><ActivityJogoAssociacao /></Suspense>} />
               <Route path="linkimage" element={<Suspense fallback={<LoadingPage />}><ActivityLigarImagens /></Suspense>} />
+              <Route path="completephrase" element={<Suspense fallback={<LoadingPage />}><ActivityJogoCompletarFrase /></Suspense>} />
             </Route>
 
             <Route path="progress" element={<Suspense fallback={<LoadingPage />}><ProgressPage /></Suspense>} />

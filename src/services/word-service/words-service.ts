@@ -304,3 +304,22 @@ export async function updatePontuationAndPhrase(lastPhrase: string, phraseId: nu
         console.log(error);
     }
 }
+
+export async function updatePontuationAndPhraseComplet(lastPhrase: string, phraseId: number, userId: string, pontuation: number, complexity: number): Promise<any> {
+    const newUltimaFraseAprendida: string = getNewUltimaPalavraAprendida(lastPhrase, phraseId, complexity);
+    
+    try {
+        const { error } = await supabase
+        .from('usuarios')
+        .update({ ultimaFraseCompletar: newUltimaFraseAprendida, pontuacao: pontuation})
+        .eq('idUsuario', userId)
+  
+        if(error) {
+            throw new Error(error.message);
+        }else {
+
+        }
+    } catch(error) {
+        console.log(error);
+    }
+}
