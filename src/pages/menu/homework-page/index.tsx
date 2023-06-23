@@ -68,7 +68,7 @@ export default function HomeWorkPage() {
 
   return(
     <div className='homework-page w-full min-h-screen p-5'> 
-       <div className='bg-white w-full h-full rounded-3xl practice-card flex flex-col p-5 md:pt-0 md:px-5 lg:px-10 lg:pt-0 gap-3'>
+       <div className='bg-white w-full h-full rounded-3xl homework-page-card flex flex-col p-5 md:pt-0 md:px-5 lg:px-10 lg:pt-0 gap-3'>
           <HeaderMenuPageComponent 
               title="Tarefas"
           />
