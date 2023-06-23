@@ -49,7 +49,7 @@ export default function Profile() {
     if(status === 'success') {
         setUserData({
           name: data.nome,
-          email: data.email,
+          email: user.email,
           image: data.imagem
         } as IUser);
 
