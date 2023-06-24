@@ -1,5 +1,5 @@
 import Swal from "sweetalert2";
-import { supabase, supabaseAdmin } from "../supabase/supabase";
+import { supabase } from "../supabase/supabase";
 
 export async function getWord(lastWord: string, complexity: number): Promise<any> {
     const lastWorldByLevel: number = getLastWord(lastWord,complexity);
@@ -47,7 +47,7 @@ export async function getWord4(lastWord: string, complexity: number): Promise<an
 
 export async function getRandomWords() {
     try {
-        const { data, error }: any = await supabaseAdmin
+        const { data, error }: any = await supabase
         .rpc('randomico_final')
   
         if(error) {
