@@ -31,7 +31,8 @@ Versão 1.0.0
 * [https://www.typescriptlang.org/] - TypeScript
 * [https://nodejs.org/en] - Node.js
 * [https://react.dev/] - React
-* [https://supabase.com/] - Banco de dados Supabase 
+* [https://supabase.com/] - Banco de dados Supabase
+* [https://sweetalert2.github.io/] - SweetAlert2
 
 ## Principais Funcionalidades
 
