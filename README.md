@@ -40,9 +40,21 @@ A aplicação oferece as seguintes funcionalidades principais:
   - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
   - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
   - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
-3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelo aluno.
+3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
 4. Progreso: Visualização das palavras aprendidas ate o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
+
+##Acessibilidade
+
+Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os usuários. Por isso, ela oferece suporte à Língua Brasileira de Sinais (Libras), por meio da extensão vLibras desenvolvida pelo governo brasileiro, basta clicar na extensão e selecionar o texto ao qual deseja ser convertido para Libras. Você pode acessá-la através do link [https://www.gov.br/governodigital/pt-br/vlibras].
+
+<div align="center">
+  <img src="https://drive.google.com/file/d/1vWfPyoZTwMN9r4ojyQBHJCSkud0Wjm-7/view" width="300px" />
+</div>
+
+Além disso, reconhecendo a importância do processo de alfabetização, especialmente para aqueles que estão iniciando essa jornada, também oferecemos a funcionalidade de transcrição de texto para fala. Essa característica valiosa auxilia no desenvolvimento da leitura e escrita, proporcionando um suporte adicional para pessoas em diferentes estágios de alfabetização. Basta clicar no ícone de microfone apresentado em toda aplicação, e o texto será convertido em fala.
+
+
 
 ## Exemplo de Uso
 
