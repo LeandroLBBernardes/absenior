@@ -68,3 +68,9 @@ Além disso, reconhecendo a importância do processo de alfabetização, especia
 
 Você pode acessar a aplicação em [https://absenior.vercel.app/](https://absenior.vercel.app/) para experimentar e utilizar a funcionalidade de alfabetização para idosos. Basta realizar o cadastro e você já poderá aproveitar a aplicação, devido ao objetivo principal que é a praticidade e facilidade no uso da aplicação, a primeira experiencia de uso sera tranquila.
 
+## Autores
+
+* **Desenvolvedor** - Leandro de Lima - [https://github.com/LeandroLBBernardes]
+* **Desenvolvedor** - Ronald franklin - [https://github.com/RonaldFranklin]
+* **Designer** - Vitor Rocha - [https://github.com/vitor-martsss] 
+
