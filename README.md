@@ -38,7 +38,7 @@ A aplicação oferece as seguintes funcionalidades principais:
   - Forme a Palavra: Exibição de uma imagem e as letras da palavra embaralhadas, o usuário deve organizá-las na ordem correta.
   - Complete a Frase: Exibição de uma frase com uma palavra faltando, o usuário deve selecionar a palavra correta para completar a frase.
   - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
-  - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra corretas para completar a atividade.
+  - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
   - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelo aluno.
 4. Progreso: Visualização das palavras aprendidas ate o momento.
