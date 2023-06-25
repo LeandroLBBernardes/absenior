@@ -21,12 +21,13 @@ Para executar o projeto localmente, siga as instruções abaixo:
 
 ## Tecnologias e Linguagens de Programação Utilizadas
 
-- HTML
-- CSS
-- TypeScript
-- Node.js
-- React
-- Banco de dados Supabase
+* [https://developer.mozilla.org/pt-BR/docs/Web/HTML] - HTML
+* [https://developer.mozilla.org/pt-BR/docs/Web/CSS] - CSS
+* [https://sass-lang.com/] - Sass
+* [https://www.typescriptlang.org/] - TypeScript
+* [https://nodejs.org/en] - Node.js
+* [https://react.dev/] - React
+* [https://supabase.com/] - Banco de dados Supabase 
 
 ## Principais Funcionalidades
 
