@@ -40,7 +40,7 @@ A aplicação oferece as seguintes funcionalidades principais:
 
 1. Prática de Escrita: Exibição de imagens com instruções para auxiliar na escrita de cada letra.
 2. Atividades:
-  &emsp;- Complete as Sílabas: Exibição de uma imagem e as sílabas correspondentes à palavra da imagem, o usuário deve selecionar a ordem correta.
+  <p>&emsp;- Complete as Sílabas: Exibição de uma imagem e as sílabas correspondentes à palavra da imagem, o usuário deve selecionar a ordem correta.</p>
   &emsp;- Forme a Palavra: Exibição de uma imagem e as letras da palavra embaralhadas, o usuário deve organizá-las na ordem correta.
   &emsp;- Complete a Frase: Exibição de uma frase com uma palavra faltando, o usuário deve selecionar a palavra correta para completar a frase.
   &emsp;- Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
