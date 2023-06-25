@@ -48,7 +48,7 @@ A aplicação oferece as seguintes funcionalidades principais:
  - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
  - **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
-4. Progreso: Visualização das palavras aprendidas ate o momento.
+4. Progresso: Visualização das palavras aprendidas até o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
 6. Apoio: O usuário é redirecionado para um canal de apoio, onde pode estudar alguns conceitos.
 7. Seleção de dificuldade das atividades: Essa seleção é feita na primeira tela após o login/cadastro, nela o usuário poderá escolher de 1 a 3, que são respectivamente: fácil, médio e difícil, quanto mais alta a dificuldade, mais alto será o nível de dificuldade das palavras apresentadas nas atividades.
