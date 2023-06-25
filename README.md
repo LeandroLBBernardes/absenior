@@ -40,13 +40,13 @@ A aplicação oferece as seguintes funcionalidades principais:
 
 1. Prática de Escrita: Exibição de imagens com instruções para auxiliar na escrita de cada letra.
 2. Atividades:
-         - Complete as Sílabas: Exibição de uma imagem e as sílabas correspondentes à palavra da imagem, o usuário deve selecionar a ordem correta.
-         - Forme a Palavra: Exibição de uma imagem e as letras da palavra embaralhadas, o usuário deve organizá-las na ordem correta.
-         - Complete a Frase: Exibição de uma frase com uma palavra faltando, o usuário deve selecionar a palavra correta para completar a frase.
-         - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
-         - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
-         - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
-         **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
+ - Complete as Sílabas: Exibição de uma imagem e as sílabas correspondentes à palavra da imagem, o usuário deve selecionar a ordem correta.
+ - Forme a Palavra: Exibição de uma imagem e as letras da palavra embaralhadas, o usuário deve organizá-las na ordem correta.
+ - Complete a Frase: Exibição de uma frase com uma palavra faltando, o usuário deve selecionar a palavra correta para completar a frase.
+ - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
+ - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
+ - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
+ **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
 4. Progreso: Visualização das palavras aprendidas ate o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
