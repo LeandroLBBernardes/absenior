@@ -89,7 +89,7 @@ export function WordTable() {
     <div className='lg:pt-10 progress-table w-full flex flex-col gap-6'>
           <div className='flex flex-col justify-between lg:items-center lg:flex-row w-full'>
             <div className='flex gap-3 items-center'>
-              <h1 className='md:text-xl lg:2xl'>Palavras Aprendidas</h1>
+              <h1 className='md:text-xl lg:2xl'>Palavras aprendidas</h1>
               <span onClick={() => speech.textToSpeech('Palavras Aprendidas')}>{React.createElement(ImVolumeHigh, { size: "28"})}</span>
             </div>
 

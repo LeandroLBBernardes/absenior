@@ -102,12 +102,21 @@ export default function Register() {
     }
 
     const errorAlert = () => {
-        Swal.fire({
-            icon: 'error',
-            title: 'Erro ao cadastrar!',
-            text: 'Usuário já cadastrado',
-            confirmButtonColor: '#508E92'
-        })
+        if(dataUser.password.length < 6) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao cadastrar!',
+                text: 'A senha deve possuir mais que 6 caracteres',
+                confirmButtonColor: '#508E92'
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao cadastrar!',
+                text: 'Usuário já cadastrado',
+                confirmButtonColor: '#508E92'
+            })
+        }
     }
 
     if(isLoading){
@@ -160,6 +169,7 @@ export default function Register() {
                                 value={dataUser.password}
                             />
                             <button className='w-full absenior-button text-lg p-8 lg:p-8'>Confirmar</button>
+                            <p>A senha deve possuir mais que 6 caracteres.</p>
                             <p>Já possui uma conta? 
                                 <a className='underline cursor-pointer' onClick={navigateToSignIn}>Entrar</a>
                             </p>

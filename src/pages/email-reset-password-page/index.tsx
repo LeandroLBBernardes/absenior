@@ -115,7 +115,7 @@ export default function EmailResetPassword() {
                 {!loading ? (
                     <>
                         <button className='w-full absenior-button' type='submit'>Enviar Email</button>
-                        <p>Ao clicar no botão você receberá por email um link para cadastrar sua nova senha.</p>
+                        <p>Ao clicar no botão você receberá por e-mail um link para cadastrar sua nova senha.</p>
                         <a className='underline cursor-pointer' onClick={navigateToLogin}>Voltar ao Login</a> 
                     </>
                 ) : (
