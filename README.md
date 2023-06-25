@@ -62,7 +62,7 @@ Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os u
   <img src="https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/word_images/Libras.png?t=2023-06-25T21%3A06%3A42.221Z" width="700px" />
 </div>
 
-Além disso, reconhecendo a importância do processo de alfabetização, especialmente para aqueles que estão iniciando essa jornada, também oferecemos a funcionalidade de transcrição de texto para fala. Essa característica valiosa auxilia no desenvolvimento da leitura e escrita, proporcionando um suporte adicional para pessoas em diferentes estágios de alfabetização. Basta clicar no ícone de microfone apresentado em toda aplicação, e o texto será convertido em fala.
+Além disso, reconhecendo a importância do processo de alfabetização, especialmente para aqueles que estão iniciando essa jornada, também oferecemos a funcionalidade de transcrição de texto para fala. Essa característica valiosa auxilia no desenvolvimento da leitura e escrita, proporcionando um suporte adicional para pessoas em diferentes estágios de alfabetização. Basta clicar no ícone de alto falante apresentado em toda aplicação, e o texto será convertido em fala.
 
 <div align="center">
   <img src="https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/word_images/TextoEmFala.png?t=2023-06-25T21%3A07%3A34.085Z" width="700px" />
