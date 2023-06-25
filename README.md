@@ -38,7 +38,7 @@ Versão 1.0.0
 
 A aplicação oferece as seguintes funcionalidades principais:
 
-1. Prática de Escrita: Exibição de imagens para auxiliar na escrita de cada letra.
+1. Prática de Escrita: Exibição de imagens com instruções para auxiliar na escrita de cada letra.
 2. Atividades:
   - Complete as Sílabas: Exibição de uma imagem e as sílabas correspondentes à palavra da imagem, o usuário deve selecionar a ordem correta.
   - Forme a Palavra: Exibição de uma imagem e as letras da palavra embaralhadas, o usuário deve organizá-las na ordem correta.
@@ -46,9 +46,13 @@ A aplicação oferece as seguintes funcionalidades principais:
   - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
   - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
   - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
+  **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
 4. Progreso: Visualização das palavras aprendidas ate o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
+6. Apoio: O usuário é redirecionado para um canal de apoio, onde pode estudar alguns conceitos.
+7. Seleção de dificuldade das atividades: Essa seleção é feita na primeira tela após o login/cadastro, nela o usuário poderá escolher de 1 a 3, que são respectivamente: fácil, médio e difícil, quanto mais alta a dificuldade, mais alto será o nível de dificuldade das palavras apresentadas nas atividades.
+8. Edição de dados pessoais: Pode se alterar foto de perfil, nome, e-mail e senha. Para alterar e-mail, será enviado um link de confirmação para o e-mail ao qual deseja se alterar.
 
 ## Acessibilidade
 
