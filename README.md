@@ -48,9 +48,11 @@ A aplicação oferece as seguintes funcionalidades principais:
 
 Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os usuários. Por isso, ela oferece suporte à Língua Brasileira de Sinais (Libras), por meio da extensão vLibras desenvolvida pelo governo brasileiro, basta clicar na extensão e selecionar o texto ao qual deseja ser convertido para Libras. Você pode acessá-la através do link [https://www.gov.br/governodigital/pt-br/vlibras].
 
+
 <div align="center">
-  <img src="https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/word_images/Libras.png?t=2023-06-25T21%3A06%3A42.221Z" width="300px" />
+  <img src="https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/word_images/Libras.png?t=2023-06-25T21%3A06%3A42.221Z" width="700px" />
 </div>
+
 
 Além disso, reconhecendo a importância do processo de alfabetização, especialmente para aqueles que estão iniciando essa jornada, também oferecemos a funcionalidade de transcrição de texto para fala. Essa característica valiosa auxilia no desenvolvimento da leitura e escrita, proporcionando um suporte adicional para pessoas em diferentes estágios de alfabetização. Basta clicar no ícone de microfone apresentado em toda aplicação, e o texto será convertido em fala.
 
