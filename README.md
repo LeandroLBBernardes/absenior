@@ -21,7 +21,7 @@ Para executar o projeto localmente, siga as instruções abaixo:
 
 ## Versão
 
-V 1.0.0
+Versão 1.0.0
 
 ## Tecnologias e Linguagens de Programação Utilizadas
 
