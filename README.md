@@ -46,7 +46,7 @@ A aplicação oferece as seguintes funcionalidades principais:
  - Forme a Frase: Exibição de uma frase com as palavras embaralhadas, o usuário deve selecioná-las na ordem correta para formar a frase.
  - Relacione Imagem com Palavra: Exibição de imagens e palavras, o usuário deve selecionar a imagem e a palavra correta para completar a atividade.
  - Associação: Exibição de uma imagem e várias palavras, o usuário deve selecionar a palavra correta que representa a imagem.
- **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
+ - **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
 4. Progreso: Visualização das palavras aprendidas ate o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
