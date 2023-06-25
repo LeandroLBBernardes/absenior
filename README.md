@@ -19,6 +19,10 @@ Para executar o projeto localmente, siga as instruções abaixo:
       `npm run dev`
 6. Acesse a aplicação no navegador utilizando o endereço disponibilizado no terminal apos rodar o comando npm run dev
 
+## Versão
+
+V 1.0.0
+
 ## Tecnologias e Linguagens de Programação Utilizadas
 
 * [https://developer.mozilla.org/pt-BR/docs/Web/HTML] - HTML
