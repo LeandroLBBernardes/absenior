@@ -25,14 +25,14 @@ Versão 1.0.0
 
 ## Tecnologias e Linguagens de Programação Utilizadas
 
-* [https://developer.mozilla.org/pt-BR/docs/Web/HTML] - HTML
-* [https://developer.mozilla.org/pt-BR/docs/Web/CSS] - CSS
-* [https://sass-lang.com/] - Sass
-* [https://www.typescriptlang.org/] - TypeScript
-* [https://nodejs.org/en] - Node.js
-* [https://react.dev/] - React
-* [https://supabase.com/] - Banco de dados Supabase
-* [https://sweetalert2.github.io/] - SweetAlert2
+* https://developer.mozilla.org/pt-BR/docs/Web/HTML - HTML
+* https://developer.mozilla.org/pt-BR/docs/Web/CSS - CSS
+* https://sass-lang.com/ - Sass
+* https://www.typescriptlang.org/ - TypeScript
+* https://nodejs.org/en - Node.js
+* https://react.dev/ - React
+* https://supabase.com/ - Banco de dados Supabase
+* https://sweetalert2.github.io/ - SweetAlert2
 
 ## Principais Funcionalidades
 
@@ -52,7 +52,7 @@ A aplicação oferece as seguintes funcionalidades principais:
 
 ## Acessibilidade
 
-Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os usuários. Por isso, ela oferece suporte à Língua Brasileira de Sinais (Libras), por meio da extensão vLibras desenvolvida pelo governo brasileiro, basta clicar na extensão e selecionar o texto ao qual deseja ser convertido para Libras. Você pode acessá-la através do link [https://www.gov.br/governodigital/pt-br/vlibras].
+Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os usuários. Por isso, ela oferece suporte à Língua Brasileira de Sinais (Libras), por meio da extensão vLibras desenvolvida pelo governo brasileiro, basta clicar na extensão e selecionar o texto ao qual deseja ser convertido para Libras. Você pode acessá-la através do link https://www.gov.br/governodigital/pt-br/vlibras.
 
 <div align="center">
   <img src="https://tgxaowsodjjnuyqaswdp.supabase.co/storage/v1/object/public/word_images/Libras.png?t=2023-06-25T21%3A06%3A42.221Z" width="700px" />
@@ -70,7 +70,7 @@ Você pode acessar a aplicação em [https://absenior.vercel.app/](https://absen
 
 ## Autores
 
-* **Desenvolvedor** - Leandro de Lima - [https://github.com/LeandroLBBernardes]
-* **Desenvolvedor** - Ronald franklin - [https://github.com/RonaldFranklin]
-* **Designer** - Vitor Rocha - [https://github.com/vitor-martsss] 
+* **Desenvolvedor** - Leandro de Lima - https://github.com/LeandroLBBernardes
+* **Desenvolvedor** - Ronald franklin - https://github.com/RonaldFranklin
+* **Designer** - Vitor Rocha - https://github.com/vitor-martsss 
 
