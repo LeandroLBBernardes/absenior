@@ -44,7 +44,7 @@ A aplicação oferece as seguintes funcionalidades principais:
 4. Progreso: Visualização das palavras aprendidas ate o momento.
 5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
 
-##Acessibilidade
+## Acessibilidade
 
 Nossa aplicação é inclusiva e busca promover a acessibilidade para todos os usuários. Por isso, ela oferece suporte à Língua Brasileira de Sinais (Libras), por meio da extensão vLibras desenvolvida pelo governo brasileiro, basta clicar na extensão e selecionar o texto ao qual deseja ser convertido para Libras. Você pode acessá-la através do link [https://www.gov.br/governodigital/pt-br/vlibras].
 
