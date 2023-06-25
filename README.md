@@ -49,7 +49,7 @@ A aplicação oferece as seguintes funcionalidades principais:
  - **OBS:** Para cada atividade realizada corretamente é ofertado 4 pontos para o usuário, o que desbloqueará insígnias.
 3. Tarefas: Uma maneira para que o professor consiga colocar atividades para serem realizadas pelos alunos, as tarefas apenas serão postadas por perfis cadastrados como professor.
 4. Progresso: Visualização das palavras aprendidas até o momento.
-5. Conquistas: Premiação com conquistar ao atingir um numero de palavras aprendidas.
+5. Conquistas: Insignias conquistadas ao atingir determinadas pontuações.
 6. Apoio: O usuário é redirecionado para um canal de apoio, onde pode estudar alguns conceitos.
 7. Seleção de dificuldade das atividades: Essa seleção é feita na primeira tela após o login/cadastro, nela o usuário poderá escolher de 1 a 3, que são respectivamente: fácil, médio e difícil, quanto mais alta a dificuldade, mais alto será o nível de dificuldade das palavras apresentadas nas atividades.
 8. Edição de dados pessoais: Pode se alterar foto de perfil, nome, e-mail e senha. Para alterar e-mail, será enviado um link de confirmação para o e-mail ao qual deseja se alterar.
