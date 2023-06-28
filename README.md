@@ -76,5 +76,7 @@ Você pode acessar a aplicação em [https://absenior.vercel.app/](https://absen
 
 * **Desenvolvedor** - Leandro de Lima - https://github.com/LeandroLBBernardes
 * **Desenvolvedor** - Ronald franklin - https://github.com/RonaldFranklin
-* **Designer** - Vitor Rocha - https://github.com/vitor-martsss 
+* **Designer** - Vitor Rocha - https://github.com/vitor-martsss
+* **Designer/Analista de Negócio** - Nicoli Louise
+* **Operador De Banco De Dados** - Carlos Eduardo
 
