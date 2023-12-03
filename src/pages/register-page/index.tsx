@@ -28,6 +28,9 @@ export default function Register() {
 
     const submitForm = async (eventSubmit: any) => {
         eventSubmit.preventDefault();
+        
+        if(!validation())
+            return;
 
         try {
             setIsLoading(true);
@@ -109,16 +112,7 @@ export default function Register() {
                 text: 'A senha deve possuir mais que 6 caracteres',
                 confirmButtonColor: '#508E92'
             })
-        } 
-        else if(!dataUser.name) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Erro ao cadastrar!',
-                text: 'O nome não pode estar vazio!',
-                confirmButtonColor: '#508E92'
-            })
-        } 
-        else {
+        }else {
             Swal.fire({
                 icon: 'error',
                 title: 'Erro ao cadastrar!',
@@ -126,6 +120,21 @@ export default function Register() {
                 confirmButtonColor: '#508E92'
             })
         }
+    }
+
+    const validation = (): boolean => {
+        if(!dataUser.name) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao cadastrar!',
+                text: 'O nome não pode estar vazio!',
+                confirmButtonColor: '#508E92'
+            })
+
+            return false;
+        }
+        
+        return true;
     }
 
     if(isLoading){
