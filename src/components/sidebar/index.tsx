@@ -109,6 +109,7 @@ export default function SideBar() {
                     <Link
                     to={menu?.link}
                     key={i}
+                    id={menu?.name}
                     className="mt-3 md:mt-5 group flex text-sm font-medium p-0 md:p-2 md:hover:bg-absenior-orange-hover text-white delay-0 md:delay-100"
                     >
                     <div className="px-0 md:px-4 font-bold" onClick={menu?.click && menu?.click }>{React.createElement(menu?.icon, { size: "28"})}</div>
