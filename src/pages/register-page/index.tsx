@@ -109,7 +109,16 @@ export default function Register() {
                 text: 'A senha deve possuir mais que 6 caracteres',
                 confirmButtonColor: '#508E92'
             })
-        } else {
+        } 
+        else if(!dataUser.name) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Erro ao cadastrar!',
+                text: 'O nome não pode estar vazio!',
+                confirmButtonColor: '#508E92'
+            })
+        } 
+        else {
             Swal.fire({
                 icon: 'error',
                 title: 'Erro ao cadastrar!',
